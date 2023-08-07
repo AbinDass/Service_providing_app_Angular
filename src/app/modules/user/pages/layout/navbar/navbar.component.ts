@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 mobileNav: boolean = false ;
+searchBar: boolean = false;
 
 }
