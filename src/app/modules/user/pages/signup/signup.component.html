@@ -1,0 +1,49 @@
+<div class="signup h-[760px] flex w-full text-white bg-black">
+    <div class="w-full hidden lg:flex justify-center items-center">
+        <img src="assets/signupImg.png" alt="" class="h-[400px]">
+    </div>
+    
+    <form action="" class="w-full flex flex-col justify-center items-center" (ngSubmit)="signupSubmit()">
+            <div>
+                <h1 class="text-3xl font-medium uppercase underline py-10">sign up</h1>
+            </div>
+            <div class="lg:flex capitalize gap-5 p-5">
+
+                <div class=" flex flex-col gap-5" >
+                    <div *ngFor="let x of inputBoxFirst">
+                        <app-inputbox 
+                            [inputId]="x.inputId"
+                            [inputType]="x.inputType"
+                            [labelName]="x.labelName"
+                            [inputPlaceHolder]="x.inputPlaceHolder"
+                            [inputFormControlName]="x.inputId"
+                            [form]="signupForm"    
+                        ></app-inputbox>
+                    </div>
+                </div>
+
+                <div class=" flex flex-col gap-5">
+                    <div *ngFor="let x of inputBoxSecond">
+                        <app-inputbox
+                            [inputId]="x.inputId"
+                            [inputType]="x.inputType"
+                            [labelName]="x.labelName"
+                            [inputPlaceHolder]="x.inputPlaceHolder"
+                            [inputFormControlName]="x.inputId"
+                            [form]="signupForm"
+                        ></app-inputbox>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="flex justify-end capitalize py-10 gap-10 ">
+                <p>back to home ? <span class="text-xl capitalize cursor-pointer text-yellow-500" routerLink="">click here</span></p>
+                <button [disabled]="signupForm.invalid" class="signin disabled:cursor-not-allowed capitalize w-20 bg-yellow-500 h-10 rounded text-black hover:bg-white hover:text-yellow-500 text-lg font-medium">register</button>
+            </div>
+           <div class="flex-col gap-5">
+
+           </div>
+        </form>
+    </div>
