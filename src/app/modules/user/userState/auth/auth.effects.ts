@@ -1,17 +1,20 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs';
+import { map,mergeMap, switchMap,of } from 'rxjs';
 import * as AuthActions from './auth.action';
 import { UserAuthService } from '../../services/user-auth.service';
 import { Injectable } from '@angular/core';
 import { user, userModel } from '../../model/userState';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class authEffects {
   constructor(
     private action$: Actions,
     private auth: UserAuthService,
-    private router: Router
+    private router: Router,
+    private store: Store
+
   ) {}
   loginRequest = createEffect(() => {
     return this.action$.pipe(
@@ -19,7 +22,6 @@ export class authEffects {
       switchMap((logindata: { email: string; password: string }) => {
         return this.auth.userLogin(logindata).pipe(
           map((data) => {
-            console.log(data, 'hiin daaata');
             let res = { token: data.token, user: data.user };
             this.router.navigate(['']);
             return AuthActions.loginSuccess(res);
@@ -33,10 +35,8 @@ export class authEffects {
     return this.action$.pipe(
       ofType(AuthActions.signUpRequested),
       switchMap((signupdata: userModel) => {
-        console.log(signupdata, 'iam here signupdata');
         return this.auth.userRegister(signupdata).pipe(
           map((data) => {
-            console.log(data.userdata, data.token, 'ivde dfsdf');
             let res = { token: data.token, user: data.userdata };
             this.router.navigate(['']);
             return AuthActions.signUpSuccess(res);
@@ -57,4 +57,16 @@ export class authEffects {
     },
     { dispatch: false }
   );
+
+  autoLogin = createEffect(
+    () => {
+       return this.action$.pipe(
+        ofType(AuthActions.autologin),
+        map(()=> {
+          let  A =  this.auth.autologin()
+          if(A) this.store.dispatch(AuthActions.autologinSuccess({token:A})) 
+        })
+       )
+    },{dispatch: false}
+    )
 }

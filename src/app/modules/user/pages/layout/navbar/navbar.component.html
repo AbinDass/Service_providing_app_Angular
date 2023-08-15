@@ -1,4 +1,4 @@
-<nav class="sticky top-0 left-0 w-full flex flex-col">
+<nav class="sticky top-0 left-0 w-full flex flex-col z-50">
   <!-- larger screens -->
   <div>
     <div class="large bg-white hidden md:flex w-full justify-center py-5">
@@ -50,9 +50,10 @@
         <h1 routerLink="nearbyservices"  class="cursor-pointer">service</h1>
         <h1 routerLink="about"  class="cursor-pointer">about</h1>
         <button
+          (click)="showmodal = !showmodal"
           class="px-2 h-10 bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 hidden md:block"
         >
-          choose district
+          {{choosedDistrict ? choosedDistrict : 'choose location'}}
         </button>
       </div>
     </div>
@@ -68,7 +69,7 @@
         routerLink=""
         class="logo text-xl text-green-600 font-medium capitalize"
       >
-        social-expo
+        social-expo 
       </div>
       <div
         class="toggle"
@@ -119,7 +120,7 @@
       }}"
     >
       <div class="flex flex-col gap-10 text-white px-10 py-5 uppercase">
-        <h1 routerLink="">home</h1>
+        <h1 routerLink="">home </h1>
         <h1 routerLink="about">about</h1>
         <h1 routerLink="contact">contact</h1>
         <h1 routerLink="post">post</h1>
@@ -140,6 +141,11 @@
     *ngIf="searchBar"
     class="top-20 w-full mb-1 flex bg-transparent justify-center items-center"
   >
-    <app-search></app-search>
+    <app-search [data]="searchBar"></app-search>
+    
   </div>
 </nav>
+<div *ngIf="showmodal">
+  
+  <app-chooselocation (closeLocation)="close()" (district)="district($event)"></app-chooselocation>
+</div>

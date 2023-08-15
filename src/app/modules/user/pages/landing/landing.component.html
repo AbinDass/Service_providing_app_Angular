@@ -70,3 +70,7 @@
       </div>
       
 </div>
+
+<div *ngIf="showmodal">
+  <app-chooselocation (closeLocation)="close()" (district)="district($event)"></app-chooselocation>
+</div>

@@ -1,0 +1,9 @@
+.background-image {
+    background-image: url('https://msgtravelnursing.com/wp-content/uploads/2018/08/Banner_Job_Seeker.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    /* opacity: 0.7; */
+  }
+  

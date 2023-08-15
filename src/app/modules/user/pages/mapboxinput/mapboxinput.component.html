@@ -1,0 +1,31 @@
+<div>
+  <div class="">
+    <div class="mb-4">
+      <label class="block text-gray-600 font-semibold mb-2" for="location">
+        Location
+      </label>
+      <input
+        #location
+        type="text"
+        name="location"
+        placeholder="Enter location name"
+        id="location"
+        (keyup)="chageText($event)"
+        required
+        class="w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+      />
+      <p *ngIf="!location.value " class="text-red-500">location is required</p>
+    </div>
+    <ul class="mt-4 w-full rounded-md">
+      <div *ngFor="let location of locations">
+        <li
+          (click)="selectedLocation(location)"
+          class="px-3 py-2 cursor-pointer border-b-2 hover:bg-gray-200"
+        >
+          <span class="text-lg font-bold">{{ location?.text }}</span> <br />
+          {{ location?.place_name }}
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

@@ -1,10 +1,24 @@
 <div class="w-full">
+  <input
+    type="search"
+    id="default-search"
+    class="block p-4 pl-10 md:w-[700px] text-sm my-2 rounded-lg border border-gray-300 focus:ring-blue-500 dark:bg-gray-200 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    placeholder="Search services, location..."
+    required
+    (keyup)="searchService($event)"
+  />
+  <div >
+      <li class="list-none" *ngFor="let result of searchResult">
+        <div
+            [routerLink]="'/servicelist/'+ result?.servicetitle"
+          class="flex justify-between px-20 bg-black/50 text-white h-10 items-center rounded cursor-pointer"
+        >
+          <p>{{ result.servicetitle }}</p>
+          <p>{{ result.location }}</p>
+        </div>
+        <p *ngIf="searchResult.length === 0 && result" class="text-red-500">not found search item {{searchResult.length}}</p>
+      </li>
     
-    <input
-                        type="search"
-                        id="default-search"
-                        class="block  p-4 pl-10 md:w-[700px] text-sm my-2 rounded-lg border border-gray-300 focus:ring-blue-500  dark:bg-gray-200 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search services, location..."
-                        required
-                    />
+   
+  </div>
 </div>

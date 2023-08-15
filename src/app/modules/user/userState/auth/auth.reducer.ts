@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import { user } from '../../model/userState';
-import { loginRequested, loginSuccess, logout, signUpRequested, signUpSuccess } from './auth.action';
+import { autologinSuccess, loginRequested, loginSuccess, logout, signUpRequested, signUpSuccess } from './auth.action';
 
 const initialState:user = {
     token:'',
@@ -11,6 +11,7 @@ const initialState:user = {
         email:'',
         phone: '',
         role: '',
+        district: '',
      },
      isLoading:false,
      isLogin:false,
@@ -22,7 +23,6 @@ export const authReducer = createReducer(
         on(loginRequested, (state, action) => ({...state, isLoading:true})),
 
         on(loginSuccess, (state,action)=>{  
-            console.log('login success');
            return  ({...state, isLoading:false, token:action.token , user:action.user})
         }),
 
@@ -30,5 +30,5 @@ export const authReducer = createReducer(
         on(signUpSuccess, (state,action) => ({...state, isLoading:false, token:action.token, user:action.user})),
 
         on(logout, (state, action) => ({...state, isLoading:true, token:''})),
-
+        on(autologinSuccess, (state, action) => ({...state, token:action.token}))
         )

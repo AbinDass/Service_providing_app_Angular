@@ -18,6 +18,14 @@ import { StoreModule } from '@ngrx/store';
 import { authEffects } from './userState/auth/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { authReducer } from './userState/auth/auth.reducer';
+import { ServicesComponent } from './pages/services/services.component';
+import { LoginnavbarComponent } from './pages/loginnavbar/loginnavbar.component';
+import { ServiceprofileComponent } from './pages/serviceprofile/serviceprofile.component';
+import { ChooselocationComponent } from './pages/chooselocation/chooselocation.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { AddServiceComponent } from './pages/add-service/add-service.component';
+import { BannerComponent } from './pages/banner/banner.component';
+import { MapboxinputComponent } from './pages/mapboxinput/mapboxinput.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +36,15 @@ import { authReducer } from './userState/auth/auth.reducer';
     FooterComponent,
     SigninComponent,
     SignupComponent,
-    InputboxComponent
+    InputboxComponent,
+    ServicesComponent,
+    LoginnavbarComponent,
+    ServiceprofileComponent,
+    ChooselocationComponent,
+    ProfileComponent,
+    AddServiceComponent,
+    BannerComponent,
+    MapboxinputComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +52,7 @@ import { authReducer } from './userState/auth/auth.reducer';
     NgxTypedJsModule,
     FontAwesomeModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forFeature('userAuthentication', authReducer),

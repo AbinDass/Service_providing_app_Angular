@@ -44,7 +44,6 @@ export class SignupComponent {
 
   signupSubmit(){
     if(this.signupForm.valid){
-      console.log(this.signupForm.value)
         let firstname = this.signupForm.value.firstname
         let secondname = this.signupForm.value.secondname
         let email = this.signupForm.value.email

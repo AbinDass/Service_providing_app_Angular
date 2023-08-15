@@ -23,4 +23,7 @@ export interface userModel{
     password?: string | undefined | null;
     confirmpassword?: string | undefined | null;
     role?: string | undefined | null;
+    district?: string | undefined | null;
+    location?: string | undefined | null;
+    profilepicture?: string[]
 }

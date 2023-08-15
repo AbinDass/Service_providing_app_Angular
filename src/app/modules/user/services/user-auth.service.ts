@@ -19,12 +19,16 @@ export class UserAuthService {
   }
 
   userRegister(data: userModel) {
-    console.log(data, 'iam from service');
     return this.http.post<userdata>(this.baseurl + '/postsignup', data);
   }
 
   userLogout(){
     alert('are you sure you want to logout')
-    window.localStorage.removeItem('tokrn')
+    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('userid')
+  }
+
+  autologin(){
+    return window.localStorage.getItem('token')
   }
 }

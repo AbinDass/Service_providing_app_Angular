@@ -1,0 +1,138 @@
+<div
+  class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans"
+>
+  <div class="bg-white rounded shadow-2xl p-6 m-4 w-full">
+    <form
+      #addService="ngForm"
+      (submit)="submitForm(addService.valid)"
+      class="w-full"
+    >
+      <h1 class="text-grey-darkest text-xl text-center font-medium">
+        ADD YOUR SERVICE HERE
+      </h1>
+      <div class="flex gap-5 font-medium capitalize">
+        <div class="md:w-full mb-4">
+          <div class="flex mt-4 gap-2 flex-col">
+            <label for="title"> choose job title </label>
+            <select
+              class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+              placeholder="Add designation title"
+              name="servicetitle"
+              required
+              [(ngModel)]="formData.servicetitle"
+            >
+              <option value="" selected>choose designation</option>
+              <option *ngFor="let service of availableServices">
+                {{ service.title }}
+              </option>
+            </select>
+            <div
+              *ngIf="
+                addService.controls['servicetitle']?.invalid &&
+                addService.controls['servicetitle'].value === '' &&
+                (addService.controls['servicetitle']?.dirty ||
+                  addService.submitted)
+              "
+            >
+              <div
+                *ngIf="addService.controls['servicetitle']?.errors?.['required']"
+                class="text-red-500"
+              >
+                Please select a title.
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2 mt-4">
+            <label for="labour">labour</label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+              placeholder="Add servic labour"
+              name="labour"
+              required
+              [(ngModel)]="formData.labour"
+            />
+            <div
+              *ngIf="
+                addService.controls['labour']?.invalid &&
+                (addService.controls['labour']?.dirty || addService.submitted)
+              "
+            >
+              <div
+                *ngIf="addService.controls['labour']?.errors?.['required']"
+                class="text-red-500"
+              >
+                Please add labour.
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 mt-4">
+            <app-mapboxinput
+              (selected_Location)="handleLocation($event)"
+            ></app-mapboxinput>
+          </div>
+
+          <div class="flex mt-4">
+            <!-- Add the LocationSearch component or equivalent here -->
+          </div>
+        </div>
+        <div class="md:w-full">
+          <div class="flex mt-4 gap-2 flex-col">
+            <label for="description"> description </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+              placeholder="Add description"
+              name="description"
+              required
+              maxlength="100"
+              [(ngModel)]="formData.description"
+            />
+
+            <div
+              *ngIf="
+                addService.controls['description']?.invalid &&
+                (addService.controls['description']?.dirty ||
+                  addService.submitted)
+              "
+            >
+              <div
+                *ngIf="addService.controls['description']?.errors?.['required']"
+                class="text-red-500"
+              >
+                Please add description.
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col mt-8">
+            <label>Add proof</label>
+            <input
+              type="file"
+              class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+              placeholder="Add proof"
+              name="liecence"
+              required
+              (change)="onFileChange($event)"
+            />
+            <div *ngIf="(addService.controls['liecence']?.dirty ||
+            addService.submitted)">
+            <div
+                *ngIf="formData.liesence === null"
+                class="text-red-500"
+              >
+                Please add description.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button
+          type="submit"
+          class="disabled:cursor-not-allowed bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 text-black w-36 h-10 my-5"
+        >
+          POST NOW
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
