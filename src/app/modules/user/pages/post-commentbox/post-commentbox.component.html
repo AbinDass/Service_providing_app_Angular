@@ -1,0 +1,22 @@
+<div class="flex flex-col items-center justify-around w-full text-black">
+  <ng-container *ngIf="comments?.comments as commentsarr">
+    <div
+      *ngFor="let item of commentsarr"
+      class="flex justify-center w-full items-center space-x-5 py-5 px-5"
+    >
+      <div class="flex gap-3 items-center w-full justify-start">
+        <img
+          [src]="item?.UserId?.profilepicture"
+          alt="/"
+          class="h-10 w-10 rounded-full"
+        />
+        <h2 class="text-black">{{ item?.UserId?.firstname }}</h2>
+      </div>
+      <div class="flex text-center w-full justify-center items-center">
+        <p class="font-normal text-gray-700 dark:text-gray-400">
+          {{ item.content }}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -26,6 +26,15 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AddServiceComponent } from './pages/add-service/add-service.component';
 import { BannerComponent } from './pages/banner/banner.component';
 import { MapboxinputComponent } from './pages/mapboxinput/mapboxinput.component';
+import { PostsComponent } from './pages/posts/posts.component';
+import { PostSidebarComponent } from './pages/post-sidebar/post-sidebar.component';
+import { PostSingleComponent } from './pages/post-single/post-single.component';
+import { PostAddCommentboxComponent } from './pages/post-add-commentbox/post-add-commentbox.component';
+import { PostCommentboxComponent } from './pages/post-commentbox/post-commentbox.component';
+import { PostAddComponent } from './pages/post-add/post-add.component';
+import { PostNewsletterComponent } from './pages/post-newsletter/post-newsletter.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { LoginalertComponent } from './pages/loginalert/loginalert.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +53,16 @@ import { MapboxinputComponent } from './pages/mapboxinput/mapboxinput.component'
     ProfileComponent,
     AddServiceComponent,
     BannerComponent,
-    MapboxinputComponent
+    MapboxinputComponent,
+    PostsComponent,
+    PostSidebarComponent,
+    PostSingleComponent,
+    PostAddCommentboxComponent,
+    PostCommentboxComponent,
+    PostAddComponent,
+    PostNewsletterComponent,
+    ErrorComponent,
+    LoginalertComponent,
   ],
   imports: [
     CommonModule,

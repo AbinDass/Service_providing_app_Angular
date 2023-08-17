@@ -1,0 +1,112 @@
+<div
+  *ngFor="let post of postData"
+  class="flex flex-col bg-slate-400 w-full mt-3 rounded"
+>
+  <!-- header -->
+  <div class="flex justify-between px-10 py-10 text-black">
+    <img
+      *ngIf="post.userId"
+      class="h-10 w-10 rounded-full border-2 border-zinc-800"
+      [src]="
+        post.userId.profilepicture.length
+          ? post.userId.profilepicture[0]
+          : 'https://i1.wp.com/wilcity.com/wp-content/uploads/2020/06/115-1150152_default-profile-picture-avatar-png-green.jpg?fit=820%2C860&ssl=1'
+      "
+      alt="profileimg"
+    />
+    <h2 class="text-xl">
+      {{ post?.userId?.firstname }} {{ post?.userId?.secondname }}
+    </h2>
+    <div>
+      <svg
+        width="20px"
+        height="20px"
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="#000000"
+          d="M176 416a112 112 0 1 0 0 224 112 112 0 0 0 0-224m0 64a48 48 0 1 1 0 96 48 48 0 0 1 0-96zm336-64a112 112 0 1 1 0 224 112 112 0 0 1 0-224zm0 64a48 48 0 1 0 0 96 48 48 0 0 0 0-96zm336-64a112 112 0 1 1 0 224 112 112 0 0 1 0-224zm0 64a48 48 0 1 0 0 96 48 48 0 0 0 0-96z"
+        />
+      </svg>
+    </div>
+    <!-- <CiCircleMore class="h-8 w-8"></CiCircleMore> -->
+  </div>
+  <!-- headerrebd -->
+
+  <!-- post img -->
+  <div class="flex flex-col justify-center space-x-20">
+    <img class="px-10" src="{{ post?.image }}" alt="postimg" />
+    <div class="pr-16 text-center p-2">
+      <p class="mb-3 font-normal text-white">
+        {{ post.caption }}
+      </p>
+    </div>
+  </div>
+
+  <!-- imgend -->
+  <!-- like and commnd -->
+  <div class="flex flex-col justify-center pb-10">
+    <div class="flex justify-center gap-10">
+      <div class="cursor-pointer">
+        <div *ngIf="isAuth$ | async; else nolike">
+          <div class="flex gap-3">
+            <img
+              *ngIf="!post.isLiked"
+              (click)="createlike(post._id)"
+              class="h-8 w-8"
+              src="assets/heart-svgrepo-com.png"
+              alt=""
+            />
+            <img
+              *ngIf="post.isLiked"
+              (click)="createlike(post._id)"
+              class="h-8 w-8"
+              src="assets/heart-svgrepo-fill.png"
+              alt=""
+            />
+            <h1 *ngIf="post.likedUsers.length >0" class="font-medium text-xl">{{post.likedUsers.length}}</h1>
+          </div>
+        </div>
+        <ng-template #nolike>
+          <img
+            (click)="signInAlert()"
+            class="h-8 w-8"
+            src="assets/heart-svgrepo-com.png"
+            alt=""
+          />
+        </ng-template>
+      </div>
+      <div
+        *ngIf="isAuth$ | async; else noAuth"
+        class="cursor-pointer"
+        (click)="showcomment = !showcomment"
+      >
+        <img
+          class="h-10 w-10"
+          src="assets/comment-balloon-part-3-svgrepo-com.png"
+          alt=""
+        />
+      </div>
+      <ng-template class="cursor-pointer" #noAuth>
+        <img
+          (click)="signInAlert()"
+          class="h-10 w-10"
+          src="assets/comment-balloon-part-3-svgrepo-com.png"
+          alt=""
+        />
+      </ng-template>
+    </div>
+    <ng-container
+      *ngIf="showcomment && (isAuth$ | async)"
+      class="bg-green-500 my-2"
+    >
+      <app-post-add-commentbox [postId]="post._id"></app-post-add-commentbox>
+    </ng-container>
+    <ng-container *ngIf="loginalert">
+      <app-loginalert (loginalert)="signInAlert()"></app-loginalert>
+    </ng-container>
+  </div>
+
+  <!-- like and cmd end -->
+</div>

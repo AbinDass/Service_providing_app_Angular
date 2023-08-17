@@ -7,6 +7,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ServiceprofileComponent } from './pages/serviceprofile/serviceprofile.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { PostsComponent } from './pages/posts/posts.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,8 @@ const routes: Routes = [
       { path:'nearbyservices', component:ServicesComponent},
       { path:'servicelist/:servicename', component:ServiceprofileComponent},
       { path:'profile/:userprofile', component:ProfileComponent,},
+      {path:'posts', component:PostsComponent},
+      {path:'**', component:ErrorComponent},
     ]
   }
 ];

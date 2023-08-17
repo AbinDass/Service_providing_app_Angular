@@ -1,0 +1,16 @@
+<div
+  class="w-full h-[100vh] flex flex-row justify-center space-x-10 px-10 mt-28"
+>
+  <div class="w-80 h-52 hidden md:block">
+    <app-post-sidebar></app-post-sidebar>
+  </div>
+  <div class="w-9/12 h-[100vh] overflow-auto overflow-y-scroll">
+    <ng-container *ngIf="isAuth$ | async">
+        <app-post-add></app-post-add>
+    </ng-container>
+    <app-post-single></app-post-single>
+  </div>
+  <div class="hidden md:block w-3/12 h-52">
+    <app-post-newsletter></app-post-newsletter>
+  </div>
+</div>

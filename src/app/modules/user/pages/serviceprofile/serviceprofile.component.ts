@@ -37,7 +37,7 @@ showLocation = true;
 
 
 
-userid:string|null = window.localStorage.getItem('userid');
+userid:string|null = JSON.parse(window.localStorage.getItem('userid')!);
 workerList(title:string){
   this.service.getServiceProfiles(title, this.userid ,this.location).subscribe((workers)=>{
     this.allWorkers = workers
@@ -46,11 +46,6 @@ workerList(title:string){
 }
 
 
-// locationChoose(location:string){
-//   this.showLocation = !this.showLocation;
-//   this.location = location
-//   this.workerList(this.title)
-// }
 
 goToprofile(workerId:string|null|undefined){
   

@@ -1,0 +1,55 @@
+<form action="" #addPost="ngForm" (submit)="submitPost()">
+    <div class="rounded-md w-full">
+        <h1 class="text-center text-2xl font-medium capitalize pt-10">create your post</h1>
+        <div class="flex justify-center items-center">
+          <div class="flex flex-col justify-end items-end w-full border-3">
+            <label for="dropzone-file1" class="px-20 flex flex-col">
+              <input
+                id="dropzone-file1"
+                type="file"
+                accept="images/*"
+                name="image"
+                (change)="handleImage($event)"
+                class="w-0 h-0"
+              />
+              <img
+                class="h-[100px]"
+                alt="/upload"
+                src="assets/upload-svgrepo-com.png"
+              />
+              <p class="w-full text-end">Choose Image</p>
+            </label>
+    
+          </div>
+      
+          <div class="w-full flex flex-wrap">
+            <div *ngIf="postimg; else somethingwrong" class="pt-10">
+              <img [src]="postimg" alt="postimg" class="w-10 h-10 sm:h-40 sm:w-40 rounded"  />
+            </div>
+            <ng-template #somethingwrong>
+                <div class="text-red-500">
+                  <h1 class="text-2xl font-medium text-center">OOPS!</h1>
+                  <h1>please choose a file to see preview</h1>
+                </div>
+            </ng-template>
+          </div>
+    
+        </div>
+      
+        <div class="flex justify-center">
+          <input
+            placeholder="        whats own your mind"
+            class="border-2 border-black bg-[#363838] text-white w-[70%] h-16 mt-10 mb-10 rounded-md"
+            type="text"
+            name="caption"
+            [(ngModel)]="caption"
+          />
+          <button
+            class="bg-black h-10 my-14 rounded-md text-white mx-5 w-20 text-xl"
+          >
+            P o s t
+          </button>
+        </div>
+      </div>
+</form>
+  
