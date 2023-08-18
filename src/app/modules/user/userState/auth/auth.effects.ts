@@ -64,7 +64,10 @@ export class authEffects {
         ofType(AuthActions.autologin),
         map(()=> {
           let  A =  this.auth.autologin()
-          if(A) this.store.dispatch(AuthActions.autologinSuccess({token:A})) 
+          if(A) this.store.dispatch(AuthActions.autologinSuccess({
+            token:A.token,
+            user:A.user
+          })) 
         })
        )
     },{dispatch: false}

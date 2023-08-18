@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NearbyservicesService } from '../../services/nearbyservices.service';
 import {
   addService,
@@ -7,6 +7,7 @@ import {
 } from '../../model/serviceState';
 import { search_location } from '../../model/locationType';
 import { toBase64 } from '../../helper/toBase64.js';
+import { SubscriptionService } from '../../services/subscription.service';
 @Component({
   selector: 'app-add-service',
   templateUrl: './add-service.component.html',
@@ -15,11 +16,12 @@ import { toBase64 } from '../../helper/toBase64.js';
 export class AddServiceComponent implements OnInit {
   availableServices: services[] = [];
   userid: string | null = JSON.parse(window.localStorage.getItem('userid')!);
-
+  @Input() serviceExist!:boolean
+  @Input() subscibeExist!:boolean
   location!: search_location;
   image!: File | null;
-  constructor(private service: NearbyservicesService) {}
-
+  constructor(private service: NearbyservicesService, private subscribe:SubscriptionService) {}
+ 
   formData: addService = {
     servicetitle: '',
     labour: '',
@@ -53,6 +55,7 @@ export class AddServiceComponent implements OnInit {
   handleLocation(selectedLocation: search_location) {
     this.location = selectedLocation;
   }
+
 
   laboor = {
     inputId: 'labour',

@@ -29,6 +29,10 @@ export class UserAuthService {
   }
 
   autologin(){
-    return window.localStorage.getItem('token')
+    return {
+     token: window.localStorage.getItem('token'),
+     userid: window.localStorage.getItem('userid'),
+     user:JSON.parse( window.localStorage.getItem('user')!)
+    }
   }
 }

@@ -1,7 +1,7 @@
-<div
+<div 
   class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans"
 >
-  <div class="bg-white rounded shadow-2xl p-6 m-4 w-full">
+  <div *ngIf="!serviceExist && subscibeExist; else noService" class="bg-white rounded shadow-2xl p-6 m-4 w-full">
     <form
       #addService="ngForm"
       (submit)="submitForm(addService.valid)"
@@ -135,4 +135,7 @@
       </div>
     </form>
   </div>
+  <ng-template #noService>
+    <h1>take a subscription</h1>
+  </ng-template>
 </div>

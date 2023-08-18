@@ -7,7 +7,7 @@ import { loginRequested } from '../../userState/auth/auth.action';
 import {
   idSelector,
   tokenSelector,
-  userData,
+  userDataSelector,
 } from '../../userState/auth/auth.selector';
 @Component({
   selector: 'app-signin',
@@ -43,7 +43,7 @@ export class SigninComponent implements OnInit {
     store.select(idSelector).subscribe((id) => {
       window.localStorage.setItem('userid', JSON.stringify(id));
     });
-    store.select(userData).subscribe((data) => {
+    store.select(userDataSelector).subscribe((data) => {
       const newData = JSON.stringify(data);
       window.localStorage.setItem('user', newData);
     });

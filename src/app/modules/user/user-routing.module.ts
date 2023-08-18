@@ -9,6 +9,7 @@ import { ServiceprofileComponent } from './pages/serviceprofile/serviceprofile.c
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 
 const routes: Routes = [
   {
@@ -20,10 +21,12 @@ const routes: Routes = [
       { path:'servicelist/:servicename', component:ServiceprofileComponent},
       { path:'profile/:userprofile', component:ProfileComponent,},
       {path:'posts', component:PostsComponent},
+      {path:'subscription', component:SubscribeComponent},
       {path:'**', component:ErrorComponent},
     ]
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

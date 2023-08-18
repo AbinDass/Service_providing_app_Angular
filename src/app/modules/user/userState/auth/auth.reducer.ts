@@ -30,5 +30,5 @@ export const authReducer = createReducer(
         on(signUpSuccess, (state,action) => ({...state, isLoading:false, token:action.token, user:action.user})),
 
         on(logout, (state, action) => ({...state, isLoading:true, token:''})),
-        on(autologinSuccess, (state, action) => ({...state, token:action.token}))
+        on(autologinSuccess, (state, action) => ({...state, token:action.token, user:action.user}))
         )

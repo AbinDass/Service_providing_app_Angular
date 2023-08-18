@@ -1,5 +1,5 @@
 export interface user {
-    token: string;
+    token: string|null;
     user:userModel;
     isLoading?: boolean;
     isLogin?: boolean;

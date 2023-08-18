@@ -35,6 +35,8 @@ import { PostAddComponent } from './pages/post-add/post-add.component';
 import { PostNewsletterComponent } from './pages/post-newsletter/post-newsletter.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginalertComponent } from './pages/loginalert/loginalert.component';
+import { SubscribeComponent } from './pages/subscribe/subscribe.component';
+import { SubscribeNotifyComponent } from './pages/subscribe-notify/subscribe-notify.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { LoginalertComponent } from './pages/loginalert/loginalert.component';
     PostNewsletterComponent,
     ErrorComponent,
     LoginalertComponent,
+    SubscribeComponent,
+    SubscribeNotifyComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,18 @@
+
+<div class="flex gap-5 p-5"  >
+      <div *ngFor="let plan of plans" class="w-full flex justify-center items-center flex-wrap mt-5">
+          <div class="w-full mx-auto bg-cover bg-center rounded-lg">
+            <div class=" px-6 sm:py-12 sm:px-8 flex flex-col justify-center items-center bg-black opacity-60 rounded-lg">
+              <h2 class="text-2xl sm:text-3xl text-white font-bold mb-4">{{plan.mainHead}}</h2>
+              <p class="text-white sm:text-lg mb-6">{{plan.subHead}}</p>
+              <h2 class="p-5 text-white text-3xl text-center font-medium">{{plan.plan}}</h2>
+              <h3 class="p-5 text-3xl text-center font-bold only text-white">{{plan.price}} INR</h3>
+              
+              <button (click)="subscribeHere(plan._id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+
+  </div>

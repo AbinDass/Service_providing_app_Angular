@@ -28,7 +28,10 @@ export const autologin = createAction(
 
 export const autologinSuccess = createAction(
     '[Auth] autologinSuccess',
-    props<{token: string}>()
+    props<{
+        token: string|null,
+        user:userModel
+    }>()
 )
 
 export const logout = createAction(
