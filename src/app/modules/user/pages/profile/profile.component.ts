@@ -53,4 +53,9 @@ export class ProfileComponent implements OnInit {
       this.myPost = data
     })
   }
+  deletePost(postId:string|undefined){
+    alert('Really you want to delete this post')
+    this.profile.deletePost(postId).subscribe(data => this.myPosts())
+  }
+  
 }

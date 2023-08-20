@@ -25,4 +25,5 @@ export interface myservice{
 export interface myposts{
     caption:string;
     image:string[];
+    _id?:string;
 }

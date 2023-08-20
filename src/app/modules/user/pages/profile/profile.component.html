@@ -124,7 +124,7 @@
         </h1>
       </div>
     </ng-template>
-    <div>
+    <div class="flex gap-3">
       <div *ngFor="let post of myPost" class="flex flex-wrap">
         <div class="w-full  rounded-md">
           <div class="flex flex-col flex-wrap gap-5 justify-center">
@@ -133,12 +133,15 @@
               <!-- <span>{{ item.createdAt | date }}</span> -->
               <!-- <span>{{ item.createdAt * 1000 | date }}</span> -->
               <span class="max-w-[100px]">{{post.caption | reduceLength}}</span>
+              <div>
+                <h1 class="capitalize text-red-600 cursor-pointer" (click)="deletePost(post._id)">delete now</h1>
+              </div>
             </div>
-          </div>
+            </div>
         </div>
       </div>
       <div *ngIf="myPost">
-        <h1  *ngIf="myPost.length > 3"  (click)="morePost()"> see more ..</h1>
+        <h1  *ngIf="myPost.length > 2"  (click)="morePost()"> see more ..</h1>
       </div>
 
     </div>

@@ -24,4 +24,7 @@ export class ProfileService {
   myPosts(userId: string|null){
    return this.http.get<myposts[]>(this.baseurl+`/myposts/?userId=${userId}`)
   }
+  deletePost(postId: string|undefined){
+   return this.http.delete(this.baseurl+`/posts?postid=${postId}`)
+  }
 }
