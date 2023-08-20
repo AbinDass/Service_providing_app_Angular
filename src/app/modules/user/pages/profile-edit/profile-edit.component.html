@@ -1,0 +1,154 @@
+<div
+  id="container"
+  class="fixed inset-0 bg-white bg-opacity-60 backdrop-blur-sm flex justify-center items-center"
+>
+  <div (click)="close()" class="fixed top-0 h-screen z-10 w-full"></div>
+  <div class="z-40">
+    <form #update="ngForm" (submit)="submitForm(update.valid)">
+      <div class="z-[99] bg-black text-white p-2 rounded w-[600px]">
+        <div class="flex justify-center pt-5">
+          <label class="px-20 cursor-pointer text-white">
+            <img src="assets/updateprofile.png" class="h-20" alt="">
+            <input type="file" accept="images/*" name="image" class="w-0 h-0"
+            (change)="onFileChange($event)"
+            />
+            <h1>update profile</h1>
+          </label>
+        </div>
+        <div class="flex gap-5">
+          <div>
+            <div class="pt-5 px-5">
+              <label>change first name</label>
+              <input
+                type="text"
+                name="firstname"
+                class="w-full text-black h-10 rounded"
+                required
+                [(ngModel)]="formData.firstname"
+              />
+
+              <div
+              *ngIf="
+                update.controls['firstname']?.invalid &&
+                (update.controls['firstname']?.dirty || update.submitted)
+              "
+            >
+              <div
+                *ngIf="update.controls['firstname']?.errors?.['required']"
+                class="text-red-500"
+              >
+                Please add firstname.
+              </div>
+            </div>
+            </div>
+            <div class="pt-5 px-5">
+              <label>change second name</label>
+              <input
+                type="text"
+                name="secondname"
+                required
+                class="w-full text-black h-10 rounded"
+                [(ngModel)]="formData.secondname"
+              />
+              <div
+              *ngIf="
+                update.controls['secondname']?.invalid &&
+                (update.controls['secondname']?.dirty || update.submitted)
+              "
+            >
+              <div
+                *ngIf="update.controls['secondname']?.errors?.['required']"
+                class="text-red-500"
+              >
+                Please add secondname.
+              </div>
+            </div>
+            </div>
+            <div class="pt-5 px-5">
+              <label>change email</label>
+              <input
+                type="text"
+                name="email"
+                required
+                class="w-full text-black h-10 rounded"
+                [(ngModel)]="formData.email"
+              />
+              <div
+              *ngIf="
+                update.controls['email']?.invalid &&
+                (update.controls['email']?.dirty || update.submitted)
+              "
+            >
+              <div
+                *ngIf="update.controls['email']?.errors?.['required']"
+                class="text-red-500"
+              >
+                Please add email.
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="pt-5 px-5">
+              <label>change phone</label>
+              <input
+                type="number"
+                name="phone"
+                required
+                class="w-full text-black h-10 rounded"
+                [(ngModel)]="formData.phone"
+              />
+              <div
+              *ngIf="
+                update.controls['phone']?.invalid &&
+                (update.controls['phone']?.dirty || update.submitted)
+              "
+            >
+              <div
+                *ngIf="update.controls['phone']?.errors?.['required']"
+                class="text-red-500"
+              >
+                Please add phone.
+              </div>
+            </div>
+            </div>
+
+            <div class="pt-5 px-5 text-black">
+              <app-mapboxinput></app-mapboxinput>
+            </div>
+            <div class="pt-5 px-5">
+              <label>edit declaration</label>
+              <textarea
+                type="text"
+                name="declaration"
+                required
+                class="w-full text-black rounded"
+                [(ngModel)]="formData.decleration"
+              ></textarea>
+              <div
+              *ngIf="
+                update.controls['declaration']?.invalid &&
+                (update.controls['declaration']?.dirty || update.submitted)
+              "
+            >
+              <div
+                *ngIf="update.controls['declaration']?.errors?.['required']"
+                class="text-red-500"
+              >
+                Please add declaration.
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center pt-5 pb-10">
+          <button type="submit" class="bg-green-400 w-36 p-2 rounded">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -23,6 +23,7 @@
         </div>
         <div>
           <button
+          (click)="editClose = !editClose"
             class="text-white w-28 h-8 bg-black mt-4 hover:bg-slate-400 rounded hover:text-black"
           >
             Edit Profile
@@ -78,7 +79,7 @@
     </div>
   </div>
   <div class="w-full flex flex-col gap-10">
-    <div class="flex gap-5   h-[200px]" *ngIf="myservice; else addservice">
+    <div class="flex gap-5 h-[200px]" *ngIf="myservice; else addservice">
       <div class="flex justify-center">
         <div
           class="group group/item singleJob w-[400px] p-[20px] bg-white rounded-[10px] shadow-lg shadow-greyIsh-400/700"
@@ -107,7 +108,7 @@
       </div>
       <div class="flex justify-center items-center">
         <button
-        (click)="deleteService()"
+          (click)="deleteService()"
           class="bg-red-400 w-28 cursor-pointer capitalize bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 border border-red-500 hover:border-transparent text-center rounded"
         >
           delete service
@@ -126,24 +127,36 @@
     </ng-template>
     <div class="flex gap-3">
       <div *ngFor="let post of myPost" class="flex flex-wrap">
-        <div class="w-full  rounded-md">
+        <div class="w-full rounded-md">
           <div class="flex flex-col flex-wrap gap-5 justify-center">
-            <div  class="group group/item flex flex-col singleJob w-[200px] p-[20px] bg-white rounded-[10px] shadow-lg shadow-greyIsh-400/700">
-              <img [src]="post.image[0]" alt="post" class="h-[150px] "/>
+            <div
+              class="group group/item flex flex-col singleJob w-[200px] p-[20px] bg-white rounded-[10px] shadow-lg shadow-greyIsh-400/700"
+            >
+              <img [src]="post.image[0]" alt="post" class="h-[150px]" />
               <!-- <span>{{ item.createdAt | date }}</span> -->
               <!-- <span>{{ item.createdAt * 1000 | date }}</span> -->
-              <span class="max-w-[100px]">{{post.caption | reduceLength}}</span>
+              <span class="max-w-[100px]">{{
+                post.caption | reduceLength
+              }}</span>
               <div>
-                <h1 class="capitalize text-red-600 cursor-pointer" (click)="deletePost(post._id)">delete now</h1>
+                <h1
+                  class="capitalize text-red-600 cursor-pointer"
+                  (click)="deletePost(post._id)"
+                >
+                  delete now
+                </h1>
               </div>
             </div>
-            </div>
+          </div>
         </div>
       </div>
       <div *ngIf="myPost">
-        <h1  *ngIf="myPost.length > 2"  (click)="morePost()"> see more ..</h1>
+        <h1 *ngIf="myPost.length > 3" (click)="morePost()">see more ..</h1>
       </div>
-
     </div>
   </div>
+</div>
+
+<div *ngIf="editClose">
+  <app-profile-edit (editclose)="editclose()"></app-profile-edit>
 </div>

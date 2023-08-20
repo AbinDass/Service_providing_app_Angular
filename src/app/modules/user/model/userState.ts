@@ -14,7 +14,7 @@ export interface userdata {
     error?: string;
 }
 
-export interface userModel{
+export interface userModel {
     _id?:string;
     firstname: string | undefined | null,
     secondname: string | undefined | null,
@@ -25,5 +25,6 @@ export interface userModel{
     role?: string | undefined | null;
     district?: string | undefined | null;
     location?: string | undefined | null;
-    profilepicture?: string[]
+    profilepicture?: string[];
+    decleration?:string;
 }

@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   sameUser: boolean = false;
   myservice!:myservice;
   myPost!:myposts[];
+  editClose:boolean = false;
   
   constructor(
     private profile: ProfileService,
@@ -29,9 +30,10 @@ export class ProfileComponent implements OnInit {
     });
   }
   getProfile() {
-    this.profile.getProfile(this.userid).subscribe((data) => {
+  this.profile.getProfile(this.userid).subscribe((data) => {
       this.profiledata = data;
     });
+    
   }
   myService(){
     this.profile.myService(this.userid).subscribe((data) => this.myservice = data)
@@ -56,6 +58,11 @@ export class ProfileComponent implements OnInit {
   deletePost(postId:string|undefined){
     alert('Really you want to delete this post')
     this.profile.deletePost(postId).subscribe(data => this.myPosts())
+  }
+
+  editclose(){
+    this.getProfile()
+    this.editClose = !this.editClose
   }
   
 }
