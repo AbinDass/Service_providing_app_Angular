@@ -37,6 +37,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { LoginalertComponent } from './pages/loginalert/loginalert.component';
 import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 import { SubscribeNotifyComponent } from './pages/subscribe-notify/subscribe-notify.component';
+import { ReduceLengthPipe } from 'src/app/pipes/reduce-length.pipe';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,8 @@ import { SubscribeNotifyComponent } from './pages/subscribe-notify/subscribe-not
     LoginalertComponent,
     SubscribeComponent,
     SubscribeNotifyComponent,
+    ReduceLengthPipe,
+
   ],
   imports: [
     CommonModule,

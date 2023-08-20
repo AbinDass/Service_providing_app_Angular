@@ -11,10 +11,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { CommonModule } from '@angular/common';
 import { ErrorHandlingService } from './interceptors/error.interceptor';
+// import { ReduceLengthPipe } from './pipes/reduce-length.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // ReduceLengthPipe,
   ],
   imports: [
     BrowserModule,

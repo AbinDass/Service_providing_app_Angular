@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   choosedDistrict!: string;
   showmodal: boolean = false;
   isAuth$ = this.store.select(tokenSelector);
+  userid = JSON.parse(window.localStorage.getItem('userid')!);
   constructor(
     private router: Router,
     private store: Store,
