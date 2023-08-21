@@ -12,28 +12,42 @@ import { ErrorComponent } from './pages/error/error.component';
 import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 import { ControlpanelComponent } from './pages/controlpanel/controlpanel.component';
 import { LoginalertComponent } from './pages/loginalert/loginalert.component';
+import { authGuard, signGuard } from './auth.guard';
 
 const routes: Routes = [
   {
-    path:"", component:UserComponent,children:[
-      { path:'',component:LandingComponent},
-      { path:'signin', component:SigninComponent},
-      { path:'signup', component:SignupComponent},
-      { path:'nearbyservices', component:ServicesComponent},
-      { path:'servicelist/:servicename', component:ServiceprofileComponent},
-      { path:'profile/:userprofile', component:ProfileComponent,},
-      {path:'posts', component:PostsComponent},
-      {path:'subscription', component:SubscribeComponent},
-      {path:'controlpanel', component:ControlpanelComponent},
-      {path:'loginalert', component:LoginalertComponent},
-      {path:'**', component:ErrorComponent},
-    ]
-  }
+    path: '',
+    component: UserComponent,
+    children: [
+      { path: '', component: LandingComponent },
+      { path: 'signin',canActivate:[signGuard], component: SigninComponent },
+      { path: 'signup',canActivate:[signGuard], component: SignupComponent },
+      { path: 'nearbyservices', component: ServicesComponent },
+      { path: 'servicelist/:servicename', component: ServiceprofileComponent },
+      {
+        path: 'profile/:userprofile',
+        canActivate: [authGuard],
+        component: ProfileComponent,
+      },
+      { path: 'posts', component: PostsComponent },
+      {
+        path: 'subscription',
+        canActivate: [authGuard],
+        component: SubscribeComponent,
+      },
+      {
+        path: 'controlpanel',
+        canActivate: [authGuard],
+        component: ControlpanelComponent,
+      },
+      { path: 'loginalert', component: LoginalertComponent },
+      { path: '**', component: ErrorComponent },
+    ],
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}

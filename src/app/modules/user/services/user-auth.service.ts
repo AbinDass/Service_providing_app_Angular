@@ -22,17 +22,22 @@ export class UserAuthService {
     return this.http.post<userdata>(this.baseurl + '/postsignup', data);
   }
 
-  userLogout(){
-    alert('are you sure you want to logout')
-    window.localStorage.removeItem('token')
-    window.localStorage.removeItem('userid')
-  }
-
-  autologin(){
-    return {
-     token: window.localStorage.getItem('token'),
-     userid: window.localStorage.getItem('userid'),
-     user:JSON.parse( window.localStorage.getItem('user')!)
+  userLogout() {
+    const val = confirm('are you sure you want to logout');
+    if (val) {
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('userid');
     }
   }
+
+  autologin() {
+    return {
+      token: window.localStorage.getItem('token'),
+      userid: window.localStorage.getItem('userid'),
+      user: JSON.parse(window.localStorage.getItem('user')!),
+    };
+  }
 }
+
+console.log('')
+// console.l
