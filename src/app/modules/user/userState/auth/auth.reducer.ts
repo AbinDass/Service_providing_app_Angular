@@ -12,6 +12,7 @@ const initialState:user = {
         phone: '',
         role: '',
         district: '',
+        profilepicture:[]
      },
      isLoading:false,
      isLogin:false,

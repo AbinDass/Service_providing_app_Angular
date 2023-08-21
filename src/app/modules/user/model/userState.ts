@@ -25,6 +25,6 @@ export interface userModel {
     role?: string | undefined | null;
     district?: string | undefined | null;
     location?: string | undefined | null;
-    profilepicture?: string[];
+    profilepicture: string[];
     decleration?:string;
 }

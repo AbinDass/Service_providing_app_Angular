@@ -1,0 +1,70 @@
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0 p-4">
+        <img
+          class="h-48 w-full object-cover md:w-48"
+          [src]="worker.user.profilepicture"
+          alt="Card image"
+        />
+        <h1 class="pt-4">{{ worker.servicetitle }}</h1>
+        <h1>{{ worker.location }}</h1>
+        <h1>{{ worker.labour | currency:"INR"}} /H</h1>
+      </div>
+      <div class="p-8">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            {{ worker.user.firstname }} {{ worker.user.secondname }}
+        </div>
+        <p class="mt-2 text-gray-500">
+          Pick a date and time that is suitable for you. You will get notified when the service provider approves or denies your appointment.
+        </p>
+  <form *ngIf="(isAuth$|async); else loginpls" action="" (ngSubmit)="makeAppointment()">
+
+      <input
+        type="date"
+        name="date"
+        class="border-2 pt-4 mt-3 w-full border-black"
+        [(ngModel)]="appointData.date"
+      />
+      <input
+        type="time"
+        name="time"
+        [(ngModel)]="appointData.time"
+        class="border-2 pt-4 mt-3 w-full border-black"
+      />
+      <textarea
+        type="text"
+        name="declaration"
+        class="border-2 pt-4 mt-3 w-full border-black"
+        [(ngModel)]="appointData.declaration"
+      ></textarea>
+      <div class="w-full flex justify-between pt-5">
+        <button
+          (click)="Close()"
+          id="cancel"
+          class="px-4 py-2 font-medium text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="px-4 py-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+        >
+          Schedule Appointment
+        </button>
+      </div>
+    </form>
+    <ng-template #loginpls>
+        <p class="text-red-500 mt-20">login first to hire some one!</p>
+        <button
+          (click)="Close()"
+          id="cancel"
+          class="px-4 py-2 my-4 font-medium text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+        >
+         back to profiles
+        </button>
+    </ng-template>
+  
+      </div>
+    </div>
+  </div>
+  

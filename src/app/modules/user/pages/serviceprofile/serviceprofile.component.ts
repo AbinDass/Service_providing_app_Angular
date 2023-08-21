@@ -26,15 +26,21 @@ export class ServiceprofileComponent implements OnInit {
   ngOnInit(): void {
     this.routes.paramMap.subscribe((param) => {
       this.title = param.get('servicename')!;
-      this.getSubscription()
+      this.isAuth$.subscribe((data) => {
+        if(data) this.getSubscription()
+      })
+      
     });
+
 
     this.service.locationSubject$.subscribe((data) => {
       this.location = data;
       if (this.title) this.workerList(this.title);
     });
 
-    this.checkSubscription();
+    this.isAuth$.subscribe((data) => {
+      if(data) this.checkSubscription();
+    })
   }
   showLocation = true;
 

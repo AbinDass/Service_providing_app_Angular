@@ -1,0 +1,106 @@
+<div *ngIf="allrequests" class="flex flex-col justify-center items-center p-5">
+  <div *ngIf="allrequests?.requests?.length !== 0; else no_request">
+    <div *ngIf="showmore else seeShowmore">
+        <div class="m-auto inset-0 pt-20">
+            <table class="table-auto">
+            <thead>
+                <tr>
+                <th class="px-4 py-2">Profile picture</th>
+                <th class="px-4 py-2">Name</th>
+                <th class="px-4 py-2">role</th>
+                <th class="px-4 py-2">phone</th>
+                <th class="px-4 py-2">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let request of allrequests?.requests">
+                <tr *ngIf="request.requestStatus">
+                    <td *ngIf="request.requstedUserId?.profilepicture?.length" class="border px-4 py-2">
+                    <img
+                        
+                        class="rounded-full w-16 h-16"
+                        [src]="
+                        request.requstedUserId.profilepicture.length
+                            ? request.requstedUserId.profilepicture[0]
+                            : 'assets/updateprofile.png'
+                        "
+                        alt="profile"
+                    />
+                    </td>
+                    <td class="border px-4 py-2">
+                    {{ request?.requstedUserId?.firstname }}
+                    {{ request?.requstedUserId?.secondname }}
+                    </td>
+                    <td class="border px-4 py-2">
+                    {{ request?.requstedUserId?.role }}
+                    </td>
+                    <td class="border px-4 py-2">
+                    {{ request?.requstedUserId?.phone }}
+                    </td>
+                    <td class="border px-4 py-2">
+                    {{ request?.requstedUserId?.email }}
+                    </td>
+                </tr>
+                </ng-container>
+            </tbody>
+            </table>
+
+            <div (click)="showmore = !showmore" class="text-end pt-5 text-lg text-red-600 cursor-pointer">see less</div>
+        </div>
+    </div>
+    <ng-template #seeShowmore>
+        <h1 class="pt-16 text-xl"> you want to see the complete history? <span class="cursor-pointer text-red-500" (click)="showmore = !showmore">See now</span></h1>
+    </ng-template>
+  </div>
+
+  <div *ngFor="let request of allrequests?.requests">
+    <div
+      *ngIf="!request?.requestStatus"
+      class="flex items-center mt-2 rounded-lg py-1 cursor-pointer bg-black/40 p-5"
+    >
+      <div class="relative flex flex-shrink-0 items-end">
+        <img
+          class="h-16 w-16 rounded-full"
+          [src]="
+            request.requstedUserId.profilepicture.length
+              ? request.requstedUserId.profilepicture[0]
+              : 'assets/updateprofile.png'
+          "
+          alt="/"
+        />
+
+        <span
+          class="absolute h-4 w-4 bg-green-400 rounded-full bottom-0 right-0 border-2 border-slate-900"
+        ></span>
+      </div>
+      <div class="ml-3.5">
+        <h1 class="font-semibold tracking-tight text-xs">
+          <span class="text-xl text-red-500">{{
+            request.requstedUserId.firstname
+          }}</span>
+          has requested to follow
+        </h1>
+        <div class="flex justify-between gap-8">
+          <button
+            (click)="acceptRequest(request._id)"
+            class="bg-green-200 w-24 text-black rounded mt-5"
+          >
+            Accept
+          </button>
+          <button
+            *ngIf="!request?.requestStatus"
+            (click)="rejectRequest()"
+            class="bg-red-200 w-24 text-black rounded mt-5"
+          >
+            Reject
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #no_request>
+  <div class="text-xl text-red-500 flex justify-center items-center h-[600px]">
+    currently there is no requests for you
+  </div>
+</ng-template>

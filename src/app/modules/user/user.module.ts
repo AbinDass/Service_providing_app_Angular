@@ -39,6 +39,14 @@ import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 import { SubscribeNotifyComponent } from './pages/subscribe-notify/subscribe-notify.component';
 import { ReduceLengthPipe } from 'src/app/pipes/reduce-length.pipe';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+import { ControlpanelComponent } from './pages/controlpanel/controlpanel.component';
+import { ControlpanelHeaderComponent } from './pages/controlpanel-header/controlpanel-header.component';
+import { ControlRequestsComponent } from './pages/control-requests/control-requests.component';
+import { ControlAppointmentComponent } from './pages/control-appointment/control-appointment.component';
+import { ControlAppointmentStatusComponent } from './pages/control-appointment-status/control-appointment-status.component';
+import { ControlUpcomingComponent } from './pages/control-upcoming/control-upcoming.component';
+import { ServiceProfileCardComponent } from './pages/service-profile-card/service-profile-card.component';
+import { ServiceHiringComponent } from './pages/service-hiring/service-hiring.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +79,14 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
     SubscribeNotifyComponent,
     ReduceLengthPipe,
     ProfileEditComponent,
+    ControlpanelComponent,
+    ControlpanelHeaderComponent,
+    ControlRequestsComponent,
+    ControlAppointmentComponent,
+    ControlAppointmentStatusComponent,
+    ControlUpcomingComponent,
+    ServiceProfileCardComponent,
+    ServiceHiringComponent,
 
   ],
   imports: [

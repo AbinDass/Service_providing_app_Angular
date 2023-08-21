@@ -1,0 +1,15 @@
+<app-controlpanel-header (followrequst)="requests()" (appointments)="appontments()" (workStatus)="workStatus()"></app-controlpanel-header>
+
+<!-- requests -->
+<div *ngIf="incomingRequests">
+    <app-control-requests></app-control-requests>      
+</div>
+
+<!-- appointments -->
+<div *ngIf="incomingAppointments">
+    <app-control-appointment></app-control-appointment>
+</div>
+
+<div *ngIf="incomingWorkStatus">
+    <app-control-upcoming></app-control-upcoming>
+</div>

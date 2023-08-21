@@ -10,6 +10,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { SubscribeComponent } from './pages/subscribe/subscribe.component';
+import { ControlpanelComponent } from './pages/controlpanel/controlpanel.component';
+import { LoginalertComponent } from './pages/loginalert/loginalert.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,8 @@ const routes: Routes = [
       { path:'profile/:userprofile', component:ProfileComponent,},
       {path:'posts', component:PostsComponent},
       {path:'subscription', component:SubscribeComponent},
+      {path:'controlpanel', component:ControlpanelComponent},
+      {path:'loginalert', component:LoginalertComponent},
       {path:'**', component:ErrorComponent},
     ]
   }

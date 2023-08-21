@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class LoginalertComponent implements OnInit {
   @Input() loginAlert!:boolean
-  @Output('loginalert') loginEmitter =new EventEmitter()
   constructor(private router: Router){}
   ngOnInit(): void {
   
@@ -17,6 +16,9 @@ export class LoginalertComponent implements OnInit {
     this.router.navigate(['signin']);
   }
   close(){
-    this.loginEmitter.emit()
+    console.log('asdadsasd')
+    // this.loginEmitter.emit()
+    this.router.navigate(['/nearbyservices']);
+
   }
 }

@@ -51,7 +51,7 @@ export class SignupComponent {
         let password = this.signupForm.value.password
         let confirmpassword = this.signupForm.value.confirmpassword
       
-        this.store.dispatch(signUpRequested({ firstname, secondname, email,phone,password, confirmpassword}));
+        this.store.dispatch(signUpRequested({ firstname, secondname, email,phone,password, confirmpassword,profilepicture:[]}));
       
     }
   }

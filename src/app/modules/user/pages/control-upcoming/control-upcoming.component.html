@@ -1,0 +1,64 @@
+<div *ngIf="appointmentStatus">
+    
+    <div *ngIf="appointmentStatus.length > 0" class="flex flex-col justify-center w-full py-10">
+        <h1 class="text-center text-2xl font-medium">Appointment status</h1>
+      
+        <div class="flex justify-center gap-5 flex-wrap">
+          
+    
+            <div>
+                <div *ngFor="let status of appointmentStatus" class="w-full relative">
+                  <div *ngIf="status">
+                    <div
+                      class="bg-slate-900 text-slate-100 mt-10 px-5 py-3.5 rounded-lg shadow hover:shadow-xl max-w-sm mx-auto transform hover:-translate-y-[0.125rem] transition duration-100 ease-linear"
+                    >
+                      <div class="w-full flex items-center justify-between"></div>
+                      <div class="flex gap-10 items-center justify-center mt-2 rounded-lg py-1 cursor-pointer">
+                        <div class="relative flex flex-shrink-0 items-end">
+                          <img
+                            class="h-16 w-16 rounded-full"
+                            [src]="status.worker.profilepicture"
+                            alt="/"
+                          />
+                        </div>
+                        <div class="flex justify-between mt-3 gap-4">
+                          <h1 class="font-semibold tracking-tight text-md capitalize">
+                            Your Appointment to
+                            <span class="text-xl text-red-500">
+                              {{ status.worker.firstname }}
+                            </span>
+                            On
+                            <span class="text-xl text-red-500">{{ status.date }}</span>
+                            At
+                            <span class="text-xl text-red-500">{{ status.time }}</span>
+                          </h1>
+                        </div>
+                      </div>
+              
+                      <div class="flex flex-col justify-center items-center">
+                        <h1>
+                          {{ status.worker.firstname }}
+                          <span [ngClass]="{'text-xl text-green-500': status.status === 'confirmed', 'text-xl text-red-500': status.status !== 'confirmed' }">
+                            {{ status.status }} your appointment
+                          </span>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+    
+    
+    
+        </div>
+        <h1 *ngIf="!showMoreStatus" (click)="showMoreStatus = !showMoreStatus" class="capitalize text-xl text-red-700 cursor-pointer text-center pt-10">
+          see more
+        </h1>
+      </div>
+      <div *ngIf="appointmentStatus?.length === 0" class="flex items-center justify-center text-xl capitalize text-red-700 h-[600px]">
+        currently you dont have any appointment history 
+        
+      </div>
+      
+</div>

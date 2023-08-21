@@ -20,6 +20,7 @@ export class ProfileEditComponent {
     phone: '',
     location:'',
     decleration: '',
+    profilepicture:[]
   };
 
   constructor(private profile:ProfileService){}
