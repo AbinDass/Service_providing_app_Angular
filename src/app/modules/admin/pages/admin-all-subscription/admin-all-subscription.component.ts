@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SubscriptionService } from '../../services/subscription.service';
-import { subscription } from '../../adminState/subscriptionType';
+import { subscription } from '../../model/subscriptionType';
 
 @Component({
   selector: 'app-admin-all-subscription',
@@ -24,7 +24,5 @@ export class AdminAllSubscriptionComponent implements OnInit {
       console.log(this.plans);
     });
   }
-  deleteSubscription(){
-    
-  }
+  deleteSubscription() {}
 }

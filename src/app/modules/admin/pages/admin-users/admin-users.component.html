@@ -1,1 +1,108 @@
-<p>admin-users works!</p>
+<div class="md:w-full w-[460px]">
+    <section class="bg-white py-20">
+        <div class="container">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full px-4">
+                    <div class="max-w-full overflow-x-auto">
+                        <table class="table-auto md:w-[800px] w-full">
+                            <thead>
+                                <tr class="bg-primary text-center">
+                                    <th class="md:w-[150px] w-[100px]">first name</th>
+                                    <th class="md:w-[150px] w-[100px]">second name</th>
+                                    <th class="md:w-[150px] w-[100px]">email</th>
+                                    <th class="md:w-[150px] w-[100px]">location</th>
+                                    <th class="md:w-[150px] w-[100px]">role</th>
+                                    <th class="md:w-[150px] w-[100px]">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of list">
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-[#F3F6FF]
+                                        border-b border-l border-[#E8E8E8]
+                                    ">
+                                        {{ item.firstname }}
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-[#E8E8E8]
+                                    ">
+                                        {{ item.secondname }}
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-[#E8E8E8]
+                                    ">
+                                        {{ item.email }}
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-[#F3F6FF]
+                                        border-b border-[#E8E8E8]
+                                    ">
+                                        {{ item.location == null ? 'not added' : item.location }}
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-[#E8E8E8]
+                                    ">
+                                        {{ item.role }}
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-r border-[#E8E8E8]
+                                    ">
+                                 
+                                        <button
+                                            class="bg-red-400 w-24 rounded-md hover:bg-slate-300"
+                                            *ngIf="item.access"
+                                            (click)="userBlock(item._id);"
+                                        >
+                                            Block
+                                        </button>
+                                        <button
+                                            class="bg-green-400 w-24 rounded-md hover:bg-slate-300"
+                                            *ngIf="!item.access"
+                                            (click)="userUnblock(item._id);"
+                                        >
+                                            Un Block
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
