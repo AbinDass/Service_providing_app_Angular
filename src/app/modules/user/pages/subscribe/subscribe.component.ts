@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { userDataSelector } from '../../userState/auth/auth.selector';
+import { environment } from 'src/environments/environment.development';
 declare var Razorpay: any;
 
 @Component({
@@ -27,7 +28,7 @@ export class SubscribeComponent implements OnInit {
   user = this.store.select(userDataSelector);
   options = {
     item: '',
-    key: 'rzp_test_DjtMb1YzbFX1sf',
+    key: environment.RAZORPAY_KEY,
     amount: '',
     currency: 'INR',
     name: '',

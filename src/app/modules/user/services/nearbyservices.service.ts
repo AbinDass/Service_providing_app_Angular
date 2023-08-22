@@ -4,6 +4,7 @@ import { Search, addService, availableService, services } from '../model/service
 import { workerState } from '../model/workerState';
 import {BehaviorSubject, Observable} from 'rxjs'
 import { locations } from '../model/locationType';
+import { environment } from 'src/environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
@@ -43,8 +44,9 @@ export class NearbyservicesService {
   }
 
   // mapbox
+  
   mapboxLocation(search:string){
-   return this.http.get<{features: locations[]}>(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?country=IN&types=locality,district&access_token=pk.eyJ1IjoiYWJpbmRhcyIsImEiOiJjbGZ0cnRha2gwM3JzM2RxbWJyZ2J2Znp5In0.GwkUSDxBTdKpzz50_ezBVA`)
+   return this.http.get<{features: locations[]}>(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?country=IN&types=locality,district&access_token=${environment.MAPBOXKEY}`)
   }
 
   // addservice
