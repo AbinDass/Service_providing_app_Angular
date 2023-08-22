@@ -6,14 +6,6 @@ export interface user {
     error?: string;
 }
 
-export interface userdata {
-    token: string;
-    userdata:userModel;
-    isLoading?: boolean;
-    isLogin?: boolean;
-    error?: string;
-}
-
 export interface userModel {
     _id?:string;
     firstname: string | undefined | null,
@@ -27,5 +19,4 @@ export interface userModel {
     location?: string | undefined | null;
     profilepicture: string[];
     decleration?:string;
-    isAdmin?:boolean;
 }
