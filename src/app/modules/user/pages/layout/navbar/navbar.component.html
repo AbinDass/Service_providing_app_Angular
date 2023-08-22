@@ -50,6 +50,13 @@
         <h1 routerLink="about" class="cursor-pointer">about</h1>
         <h1 *ngIf="(isAuth$ | async)" [routerLink]="['profile', userid]" class="cursor-pointer">profile</h1>
         <button
+          *ngIf="admin"
+          routerLink="/admin/dashboard"
+          class="px-2 h-10 bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 hidden md:block"
+        >
+          Dashboard
+        </button>
+        <button
           (click)="showmodal = !showmodal"
           class="px-2 h-10 bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 hidden md:block"
         >
