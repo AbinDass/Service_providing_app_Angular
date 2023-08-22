@@ -7,6 +7,12 @@ import { AdminComponent } from './admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './pages/layout/navbar/navbar.component';
 import { DashboadComponent } from './pages/dashboad/dashboad.component';
+import { AdminSidebarComponent } from './pages/admin-sidebar/admin-sidebar.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminSubscriptionsComponent } from './pages/admin-subscriptions/admin-subscriptions.component';
+import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
+import { AdminWorkersComponent } from './pages/admin-workers/admin-workers.component';
+import { AdminServicesComponent } from './pages/admin-services/admin-services.component';
 
 
 @NgModule({
@@ -14,7 +20,13 @@ import { DashboadComponent } from './pages/dashboad/dashboad.component';
     AdminComponent,
     LoginComponent,
     DashboadComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminSidebarComponent,
+    AdminDashboardComponent,
+    AdminSubscriptionsComponent,
+    AdminUsersComponent,
+    AdminWorkersComponent,
+    AdminServicesComponent
   ],
   imports: [
     CommonModule,
