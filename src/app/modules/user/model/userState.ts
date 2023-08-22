@@ -27,4 +27,5 @@ export interface userModel {
     location?: string | undefined | null;
     profilepicture: string[];
     decleration?:string;
+    isAdmin?:boolean;
 }

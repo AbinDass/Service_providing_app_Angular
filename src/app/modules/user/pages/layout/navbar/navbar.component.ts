@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { tokenSelector } from '../../../userState/auth/auth.selector';
+import { tokenSelector, userDataSelector } from '../../../userState/auth/auth.selector';
 import { logout } from '../../../userState/auth/auth.action';
 import { NearbyservicesService } from '../../../services/nearbyservices.service';
 
@@ -16,7 +16,9 @@ export class NavbarComponent implements OnInit {
   searchBar: boolean = false;
   choosedDistrict!: string;
   showmodal: boolean = false;
+  admin!:boolean
   isAuth$ = this.store.select(tokenSelector);
+  isAdmin$ = this.store.select(userDataSelector);
   userid = JSON.parse(window.localStorage.getItem('userid')!);
   constructor(
     private router: Router,
@@ -30,6 +32,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     const token = window.localStorage.getItem('token');
     // this.isAuth = !!token
+    this.isAdmin$.subscribe(data => this.admin = data.isAdmin)
     this.service.locationSubject$.subscribe((val) => {
       this.choosedDistrict = val;
     });
