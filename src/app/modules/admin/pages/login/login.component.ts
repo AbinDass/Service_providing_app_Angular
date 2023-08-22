@@ -17,7 +17,7 @@ isAdmin!:boolean;
   loginSubmit() {
     this.adminAuth.adminLogin(this.loginData).subscribe(data => {
       this.isAdmin = data.admin
-      if(this.isAdmin) this.router.navigate(['dashboard'])
+      if(this.isAdmin) this.router.navigate(['/admin/dashboard'])
       else this.router.navigate([''])
     })
     console.log('Logging in with:', this.loginData);
