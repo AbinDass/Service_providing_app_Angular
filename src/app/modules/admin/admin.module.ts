@@ -13,6 +13,8 @@ import { AdminSubscriptionsComponent } from './pages/admin-subscriptions/admin-s
 import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 import { AdminWorkersComponent } from './pages/admin-workers/admin-workers.component';
 import { AdminServicesComponent } from './pages/admin-services/admin-services.component';
+import { AdminAddSubscriptionsComponent } from './pages/admin-add-subscriptions/admin-add-subscriptions.component';
+import { AdminAllSubscriptionComponent } from './pages/admin-all-subscription/admin-all-subscription.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { AdminServicesComponent } from './pages/admin-services/admin-services.co
     AdminSubscriptionsComponent,
     AdminUsersComponent,
     AdminWorkersComponent,
-    AdminServicesComponent
+    AdminServicesComponent,
+    AdminAddSubscriptionsComponent,
+    AdminAllSubscriptionComponent
   ],
   imports: [
     CommonModule,

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-subscriptions.component.css']
 })
 export class AdminSubscriptionsComponent {
-
+seelist:boolean=false;
 }

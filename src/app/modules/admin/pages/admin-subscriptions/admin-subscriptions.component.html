@@ -1,1 +1,7 @@
-<p>admin-subscriptions works!</p>
+
+<div class="w-full">
+    <app-admin-add-subscriptions  [seelist]="seelist" (seelist)="seelist =!seelist"></app-admin-add-subscriptions>
+</div>
+<div class="w-full">
+    <app-admin-all-subscription [seelist]="seelist" (addSub)=" seelist = !seelist"></app-admin-all-subscription>
+</div>

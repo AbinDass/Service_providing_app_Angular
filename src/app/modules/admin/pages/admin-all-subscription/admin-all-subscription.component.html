@@ -1,0 +1,93 @@
+<button
+        *ngIf="seelist"
+        (click)="seeList()"
+        class="bg-green-400 mt-6 md:mt-10 h-10 text-lg md:text-2xl mb-5 font-bold rounded-md md:w-[50%]"
+      >
+      Add subscription plans
+      </button>
+
+      <div *ngIf="seelist" class="md:w-full w-[460px]">
+        <section class="bg-white py-20">
+            <div class="container">
+                <div class="flex flex-wrap -mx-4">
+                    <div class="w-full px-4">
+                        <div class="max-w-full overflow-x-auto">
+                            <table class="table-auto md:w-[800px] w-full">
+                                <thead>
+                                    <tr class="bg-primary text-center">
+                                        <th class="md:w-[150px] w-[100px]">main heading</th>
+                                        <th class="md:w-[150px] w-[100px]">sub heading</th>
+                                        <th class="md:w-[150px] w-[100px]">price</th>
+                                        <th class="md:w-[150px] w-[100px]">description</th>
+                                        <th class="md:w-[150px] w-[100px]">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let item of plans">
+                                    <tr>
+                                        <td class="
+                                            text-center text-dark
+                                            font-medium
+                                            text-base
+                                            py-5
+                                            px-2
+                                            bg-[#F3F6FF]
+                                            border-b border-l border-[#E8E8E8]
+                                        ">
+                                            {{ item.mainHead }}
+                                        </td>
+                                        <td class="
+                                            text-center text-dark
+                                            font-medium
+                                            text-base
+                                            py-5
+                                            px-2
+                                            bg-white
+                                            border-b border-[#E8E8E8]
+                                        ">
+                                            {{ item.subHead }}
+                                        </td>
+                                        <td class="
+                                            text-center text-dark
+                                            font-medium
+                                            text-base
+                                            py-5
+                                            px-2
+                                            bg-white
+                                            border-b border-[#E8E8E8]
+                                        ">
+                                            {{ item.price }}
+                                        </td>
+                                        <td class="
+                                            text-center text-dark
+                                            font-medium
+                                            text-base
+                                            py-5
+                                            px-2
+                                            bg-[#F3F6FF]
+                                            border-b border-[#E8E8E8]
+                                        ">
+                                            {{ item.description }}
+                                        </td>
+                                        <td class="
+                                            text-center text-dark
+                                            font-medium
+                                            text-base
+                                            py-5
+                                            px-2
+                                            bg-white
+                                            border-b border-r border-[#E8E8E8]
+                                        ">
+                                            <button (click)="deleteSubscription()" class="bg-red-400 w-24 rounded-md hover:bg-slate-300">
+                                                delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
