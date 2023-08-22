@@ -22,5 +22,6 @@ export class AdminUsersComponent implements OnInit{
   }
   userUnblock(id:string|undefined){
     this.adminService.unblockUser(id).subscribe(data => this.getUsers())
-  } 
+  }
+  
 }

@@ -1,1 +1,147 @@
-<p>admin-workers works!</p>
+<div *ngIf="!showImg else imgDetails">
+    <section class="bg-white py-20">
+        <div class="container">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full px-4">
+                    <div class="max-w-full overflow-x-auto">
+                        <table class="table-auto w-full">
+                            <thead>
+                                <tr class="bg-primary text-center">
+                                    <th class="md:w-[150px] w-[100px]">profile_pic</th>
+                                    <th class="md:w-[150px] w-[100px]">first name</th>
+                                    <th class="md:w-[150px] w-[100px]">second name</th>
+                                    <th class="md:w-[150px] w-[100px]">service</th>
+                                    <th class="md:w-[150px] w-[100px]">location</th>
+                                    <th class="md:w-[150px] w-[100px]">proof</th>
+                                    <th class="md:w-[150px] w-[100px]">joined</th>
+                                    <th class="md:w-[150px] w-[100px]"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let worker of workers">
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-[#F3F6FF]
+                                        border-b border-l border-[#E8E8E8]
+                                    ">
+                                        <img [src]="worker.user.profilepicture"  />
+
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-[#F3F6FF]
+                                        border-b border-l border-[#E8E8E8]
+                                    ">
+                                        {{ worker.user.firstname }}
+
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-[#E8E8E8]
+                                    ">
+                                        {{ worker.user.secondname }}
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-[#E8E8E8]
+                                    ">
+                                        {{ worker.servicetitle }}
+
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-[#F3F6FF]
+                                        border-b border-[#E8E8E8]
+                                    ">
+                                        {{ worker.location }}
+
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-[#E8E8E8]
+                                    ">
+                                        <img class='hover:scale-110' [src]="worker.liecence"  />
+                                    </td>
+
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-r border-[#E8E8E8]
+                                    ">
+                                        {{ worker.createdAt | date:'yyyy-MM-dd' }}
+                                    </td>
+                                    <td class="
+                                        text-center text-dark
+                                        font-medium
+                                        text-base
+                                        py-5
+                                        px-2
+                                        bg-white
+                                        border-b border-r border-[#E8E8E8]
+                                    ">
+                                        <button
+                                            (click)="setWorkerProof(worker)"
+                                            class="bg-green-400 h-10 w-24 rounded-md hover:bg-slate-300 capitalize"
+                                        >
+                                            see proof
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<ng-template #imgDetails>
+    <div class="pt-16">
+        <div class="flex flex-col">
+    <img class="sm:w-[400px]" [src]="currentWorker.liecence" alt="/" />
+</div>
+<div class="flex space-x-32 pt-10">
+    <button class="bg-red-400 h-10 w-24 rounded-md hover:bg-slate-300 capitalize" (click)="showImg = !showImg">cancel</button>
+    <ng-container *ngIf="currentWorker.approved !== true; else approvedBlock">
+        <button class="bg-green-400 h-10 px-4 rounded-md hover:bg-slate-300 capitalize" (click)="approveWorker(currentWorker._id, 'approve')">Approve Worker</button>
+    </ng-container>
+    <ng-template #approvedBlock>
+        <button class="bg-green-400 h-10 px-4 rounded-md hover:bg-slate-300 capitalize" (click)="approveWorker(currentWorker._id, 'cancel')">Cancel Approve</button>
+    </ng-template>
+</div>
+
+        <!-- <app-worker-details [setShowImg]="setShowImg" [workerproof]="workerproof"></app-worker-details> -->
+    </div>
+</ng-template>
