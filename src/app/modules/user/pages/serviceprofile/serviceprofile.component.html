@@ -57,6 +57,7 @@
 <div *ngIf="showAddService">
   <div *ngIf="isAuth$ | async; else loginRequest">
     <app-add-service
+    (postEmit)="showAddService=!showAddService"
       [subscibeExist]="subscibeExist"
       [serviceExist]="serviceExist"
     ></app-add-service>
