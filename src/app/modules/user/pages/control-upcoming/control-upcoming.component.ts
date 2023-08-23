@@ -19,7 +19,6 @@ ngOnInit(): void {
   getAppointmentStatus(){
     this.controlpanel.getAppointmentStatus(this.userid).subscribe(data => {
       this.appointmentStatus = data
-      console.log(this.appointmentStatus)
     })
   }
 

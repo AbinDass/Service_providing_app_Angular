@@ -39,5 +39,4 @@ export class UserAuthService {
   }
 }
 
-console.log('')
 // console.l

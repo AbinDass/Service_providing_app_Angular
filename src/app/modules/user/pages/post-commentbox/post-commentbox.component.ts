@@ -17,7 +17,6 @@ ngOnInit(): void {
 getComments(){
   this.post.getAllComments(this.postId).subscribe((data) =>{
     this.comments = data
-    console.log(this.comments)
   })
 }
 

@@ -23,7 +23,6 @@ export class AdminWorkersComponent implements OnInit {
   getWorkerList(){
     this.adminService.workerList().subscribe(data => {
       this.workers = data
-      console.log(data,'workerlist')
     })
   }
 

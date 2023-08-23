@@ -20,6 +20,5 @@ isAdmin!:boolean;
       if(this.isAdmin) this.router.navigate(['/admin/dashboard'])
       else this.router.navigate([''])
     })
-    console.log('Logging in with:', this.loginData);
   }
 }

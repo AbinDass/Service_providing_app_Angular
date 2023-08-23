@@ -23,7 +23,6 @@ createPost(imageurl:File|null, post:string, id:string|null){
 }
 
 createComment(comment:string,userId:string|null,postId:string|undefined){
-  console.log(userId)
   return this.http.post(this.baseurl+`/addcomment/${postId}`,{comment,userId,postId})
 }
 

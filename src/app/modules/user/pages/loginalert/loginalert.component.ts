@@ -16,7 +16,6 @@ export class LoginalertComponent implements OnInit {
     this.router.navigate(['signin']);
   }
   close(){
-    console.log('asdadsasd')
     // this.loginEmitter.emit()
     this.router.navigate(['/nearbyservices']);
 

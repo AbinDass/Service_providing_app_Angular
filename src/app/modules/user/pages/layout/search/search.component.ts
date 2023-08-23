@@ -27,7 +27,6 @@ export class SearchComponent implements OnInit {
     }
     this.service.searchServices(this.userid,this.search,this.choosedDistrict).subscribe((result)=> {
       this.searchResult = Array.isArray(result) ? result : []
-      console.log(this.searchResult)
     })
   }
 

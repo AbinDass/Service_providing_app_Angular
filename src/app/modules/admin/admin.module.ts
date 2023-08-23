@@ -15,7 +15,10 @@ import { AdminWorkersComponent } from './pages/admin-workers/admin-workers.compo
 import { AdminServicesComponent } from './pages/admin-services/admin-services.component';
 import { AdminAddSubscriptionsComponent } from './pages/admin-add-subscriptions/admin-add-subscriptions.component';
 import { AdminAllSubscriptionComponent } from './pages/admin-all-subscription/admin-all-subscription.component';
-
+import { AdminShowServicesComponent } from './pages/admin-show-services/admin-show-services.component';
+import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
+import { BarComponent } from './pages/adminChart/bar/bar.component';
+import { AdminAddServiceComponent } from './pages/admin-add-service/admin-add-service.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +33,17 @@ import { AdminAllSubscriptionComponent } from './pages/admin-all-subscription/ad
     AdminWorkersComponent,
     AdminServicesComponent,
     AdminAddSubscriptionsComponent,
-    AdminAllSubscriptionComponent
+    AdminAllSubscriptionComponent,
+    AdminShowServicesComponent,
+    BarComponent,
+    AdminAddServiceComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    jqxChartModule
   ]
 })
 export class AdminModule { }

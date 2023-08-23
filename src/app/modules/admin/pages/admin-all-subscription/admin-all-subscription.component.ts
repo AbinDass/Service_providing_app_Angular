@@ -21,7 +21,6 @@ export class AdminAllSubscriptionComponent implements OnInit {
   allPlans() {
     this.subscibtion.subscriptionList().subscribe((data) => {
       this.plans = data.plans;
-      console.log(this.plans);
     });
   }
   deleteSubscription() {}

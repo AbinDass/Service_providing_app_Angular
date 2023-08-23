@@ -26,7 +26,6 @@ export class PostSingleComponent implements OnInit {
   getAllPosts() {
     this.post.getAllPosts().subscribe((data) => {
       this.postData = data;
-      console.log(this.postData, 'ffdafds');
     });
   }
 

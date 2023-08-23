@@ -1,1 +1,18 @@
-<p>admin-services works!</p>
+<div class="sm:w-[1240px]">
+    <div class="py-10 flex items-center gap-5 text-center">
+        <button
+            (click)="toggleShowService()"
+            class="bg-green-300 h-12 px-5 font-medium rounded-md w-[600px]"
+        >
+            {{ showservice  ? 'ADD SERVICES' :  'SEE SERVICES' }}
+        </button>
+    </div>
+    <ng-container *ngIf="showservice; else addService">
+        <!-- <app-show-services [servicelist]="servicelist"></app-show-services> -->
+        <app-admin-show-services  *ngIf="showservice; else addService"></app-admin-show-services>
+    </ng-container>
+    <ng-template #addService>
+        <app-admin-add-service (toggle)="toggleShowService()"></app-admin-add-service>
+        <!-- <app-add-service [showservice]="showservice" (setShowService)="toggleShowService()"></app-add-service> -->
+    </ng-template>
+</div>

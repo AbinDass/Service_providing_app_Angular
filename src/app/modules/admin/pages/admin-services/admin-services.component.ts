@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-services.component.css']
 })
 export class AdminServicesComponent {
-
+  showservice:boolean = false;
+  toggleShowService(){
+    this.showservice = !this.showservice
+  }
 }

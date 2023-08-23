@@ -36,7 +36,6 @@ export class SubscribeComponent implements OnInit {
     image: '/logo.svg',
     order_id: '',
     handler:(response: any) => {
-      console.log(response,'object');
       const razorpay_payment_id = response.razorpay_payment_id;
       const razorpay_order_id = response.razorpay_order_id;
       const razorpay_signature = response.razorpay_signature;
@@ -62,7 +61,6 @@ export class SubscribeComponent implements OnInit {
   }
   getSubscriptions() {
     this.subscribtion.getPlans().subscribe((data) => {
-      console.log(data);
       this.plans = data.plans;
     });
   }
@@ -71,7 +69,6 @@ export class SubscribeComponent implements OnInit {
     this.subscribtion
       .takeSubscription(planid, this.userid)
       .subscribe((response) => {
-        console.log(response, 'vannuu');
         if(response.message){
           this.notify = true;
           if(this.notify) alert('already you got your subscription')
@@ -86,12 +83,10 @@ export class SubscribeComponent implements OnInit {
           this.options.name = data.firstname;
           this.options.prefill.email = data.email;
           this.options.prefill.contact = data.phone;
-          console.log(this.options.amount,this.options.item,this.options.name,this.options.order_id,this.options.handler)
           const rzp = new Razorpay(this.options);
           rzp.open();
         });
         this.router.navigate(['nearbyservices'])
       });
-    console.log('clicked here');
   }
 }

@@ -18,12 +18,10 @@ userid: string | null = JSON.parse(window.localStorage.getItem('userid')!);
    let inputImg = event.target as HTMLInputElement;
    if(inputImg.files && inputImg.files.length > 0){
      this.postimg = await toBase64(inputImg.files[0])
-     console.log(this.postimg, 'event image')
    }
   }
 
   submitPost(){
     this.post.createPost(this.postimg,this.caption,this.userid).subscribe((data)=> console.log(data,"dataaaaaaaaaaa"))
-    console.log(this.postimg, this.caption)
   }
 }

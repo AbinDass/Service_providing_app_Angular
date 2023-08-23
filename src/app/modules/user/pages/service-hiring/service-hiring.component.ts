@@ -28,8 +28,6 @@ constructor(private store: Store,private controlpanel:ControlpanelService){}
 
   makeAppointment(){
     this.controlpanel.makeAppointment(this.worker.user._id,this.userid,this.appointData.date,this.appointData.time,this.appointData.declaration).subscribe(data =>{
-      console.log(data,'dasdasdadasdasdasdasdasd hhhh')
     })
-    console.log(this.appointData,'dataaaaaaaaaaa')
   }
 }

@@ -29,7 +29,6 @@ export class SubscriptionService {
     userId: string,
     subId: string
   ) {
-    console.log(razorpay_order_id+'    ',razorpay_signature)
      this.http.post(this.baseurl+'/verfypayment',{
       razorpay_payment_id,
       razorpay_order_id,

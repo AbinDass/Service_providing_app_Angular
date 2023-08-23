@@ -29,7 +29,6 @@ export class ServiceProfileCardComponent implements OnInit {
     this.showHiring=!this.showHiring
   }
   Loginalert() {
-    console.log('object');
     this.router.navigate(['/nearbyservices']);
   }
 

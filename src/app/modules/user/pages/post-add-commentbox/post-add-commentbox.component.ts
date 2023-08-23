@@ -15,7 +15,6 @@ export class PostAddCommentboxComponent {
   userid: string | null = JSON.parse(window.localStorage.getItem('userid')!);
   submitComment(){
      this.post.createComment(this.comments, this.userid, this.postId).subscribe((data) => {
-      console.log(data);
       this.pscmbxRef.getComments()
       if (data) this.comments = ' '
      })
