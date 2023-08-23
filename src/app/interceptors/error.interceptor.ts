@@ -25,6 +25,7 @@ export class ErrorHandlingService implements HttpInterceptor {
           this.router.navigate(['/login']);
           alert('please login');
         } else {
+          console.log(error)
           alert('Something went wrong. Please try again later.');
         }
         return throwError(

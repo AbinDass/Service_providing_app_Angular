@@ -9,14 +9,14 @@
 
 // }
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
 @Component({
      selector: 'app-bar',
   templateUrl: './bar.component.html',
   styleUrls: ['./bar.component.css']
 })
-export class BarComponent implements OnInit{
+export class BarComponent {
   source: any = {
     datatype: 'array', // Change the datatype to 'array' for custom data
     datafields: [
@@ -82,9 +82,7 @@ export class BarComponent implements OnInit{
 
 
     constructor(private adminService:AdminService){}
-ngOnInit(): void {
-  this.getUserdata()
-}
+
     getUserdata(){
       this.adminService.getUserdata().subscribe(data => console.log(data))
     }

@@ -48,6 +48,6 @@ export class AdminService {
     return this.http.delete(this.baseurl+`/deleteservices/${serviceid}`)
   }
   getUserdata(){
-   return this.http.get(this.baseurl+`getuserdata`)
+   return this.http.get(this.baseurl+`/getuserdata`)
   }
 }
