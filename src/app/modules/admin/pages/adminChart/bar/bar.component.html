@@ -1,8 +1,14 @@
-<jqxChart 
-    [width]="getWidth()" [height]="500"
-    [title]="'Economic comparison'"
-    [description]="'GDP and Debt in 2010'"
-    [showLegend]="true" [enableAnimations]="true" [padding]="padding"
-    [titlePadding]="titlePadding" [source]="dataAdapter" [xAxis]="xAxis"
-    [columnSeriesOverlap]="false" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
-</jqxChart>
+<div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [yaxis]="chartOptions.yaxis"
+      [xaxis]="chartOptions.xaxis"
+      [labels]="chartOptions.labels"
+      [stroke]="chartOptions.stroke"
+      [title]="chartOptions.title"
+      [dataLabels]="chartOptions.dataLabels"
+      [fill]="chartOptions.fill"
+     
+    ></apx-chart>
+  </div>

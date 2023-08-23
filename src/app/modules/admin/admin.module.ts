@@ -19,6 +19,7 @@ import { AdminShowServicesComponent } from './pages/admin-show-services/admin-sh
 import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
 import { BarComponent } from './pages/adminChart/bar/bar.component';
 import { AdminAddServiceComponent } from './pages/admin-add-service/admin-add-service.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AdminAddServiceComponent } from './pages/admin-add-service/admin-add-se
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    jqxChartModule
+    jqxChartModule,
+    NgApexchartsModule,
   ]
 })
 export class AdminModule { }

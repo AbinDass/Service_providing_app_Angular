@@ -9,81 +9,119 @@
 
 // }
 
-import { Component } from '@angular/core';
+import { Component,OnInit,ViewChild } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
-@Component({
-     selector: 'app-bar',
-  templateUrl: './bar.component.html',
-  styleUrls: ['./bar.component.css']
-})
-export class BarComponent {
-  source: any = {
-    datatype: 'array', // Change the datatype to 'array' for custom data
-    datafields: [
-        { name: 'Country' },
-        { name: 'GDP' },
-        { name: 'DebtPercent' },
-        { name: 'Debt' }
-    ],
-    localdata: [  // Replace this array with your own data
-        { Country: 'Country A', GDP: 10000, DebtPercent: 50, Debt: 5000 },
-        { Country: 'Country B', GDP: 15000, DebtPercent: 30, Debt: 4500 },
-        // Add more data entries as needed
-    ]
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexFill,
+  ApexYAxis,
+  ApexTooltip,
+  ApexTitleSubtitle,
+  ApexXAxis,
+} from 'ng-apexcharts';
+import { map } from 'rxjs';
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis | ApexYAxis[];
+  title: ApexTitleSubtitle;
+  labels: string[];
+  stroke: any; // ApexStroke;
+  dataLabels: any; // ApexDataLabels;
+  fill: ApexFill;
+  tooltip: ApexTooltip|undefined;
 };
-	getWidth() : any {
-		if (document.body.offsetWidth < 850) {
-			return '90%';
-		}
-		
-		return 850;
-	}
-	
-    dataAdapter: any = new jqx.dataAdapter(this.source, { async: false, autoBind: true, loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + this.source.url + '" : ' + error); } });
-    padding: any = { left: 5, top: 5, right: 5, bottom: 5 };
-    titlePadding: any = { left: 90, top: 0, right: 0, bottom: 10 };
-    xAxis: any =
-    {
-        dataField: 'Country',
-        gridLines: { visible: true },
-        valuesOnTicks: false
-    };
-    seriesGroups: any[] =
-    [
-        {
-            type: 'column',
-            valueAxis:
-            {
-                visible: true,
-                unitInterval: 5000,
-                title: { text: 'GDP & Debt per Capita($)<br>' }
-            },
-            series: [
-                { dataField: 'GDP', displayText: 'GDP per Capita' },
-                { dataField: 'Debt', displayText: 'Debt per Capita' }
-            ]
-        },
-        {
-            type: 'line',
-            valueAxis:
-            {
-                visible: true,
-                position: 'right',
-                unitInterval: 10,
-                title: { text: 'Debt (% of GDP)' },
-                gridLines: { visible: false },
-                labels: { horizontalAlignment: 'left' }
-            },
-            series: [
-                { dataField: 'DebtPercent', displayText: 'Debt (% of GDP)' }
-            ]
+
+@Component({
+  selector: 'app-bar',
+  templateUrl: './bar.component.html',
+  styleUrls: ['./bar.component.css'],
+})
+export class BarComponent implements OnInit{
+  @ViewChild("chart") chart!: ChartComponent;
+  public chartOptions!: any;
+
+  constructor(private adminService: AdminService) {
+    
+  }
+  // constructor(private adminService: AdminService) {}
+ngOnInit(): void {
+  this.getUserdata()
+  this.chartOptions = {
+    series: [ 
+      {
+        name: "Website Blog",
+        type: "column",
+        data: []
+      },
+      // {
+      //   name: "Social Media",
+      //   type: "line",
+      //   data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+      // }
+    ],
+    chart: {
+      height: 350,
+      type: "line"
+    },
+    stroke: {
+      width: [0, 4]
+    },
+    title: {
+      text: "Traffic Sources"
+    },
+    dataLabels: {
+      enabled: true,
+      enabledOnSeries: [1]
+    },
+    labels: [
+      "01 Jan 2001",
+      "02 Jan 2001",
+      "03 Jan 2001",
+      "04 Jan 2001",
+      "05 Jan 2001",
+      "06 Jan 2001",
+      "07 Jan 2001",
+      "08 Jan 2001",
+      "09 Jan 2001",
+      "10 Jan 2001",
+      "11 Jan 2001",
+      "12 Jan 2001"
+    ],
+    xaxis: {
+      type: "category"
+    },
+    yaxis: [
+      {
+        title: {
+          text: "Website Blog"
         }
-    ];
-
-
-    constructor(private adminService:AdminService){}
-
-    getUserdata(){
-      this.adminService.getUserdata().subscribe(data => console.log(data))
-    }
+      },
+      {
+        opposite: true,
+        title: {
+          text: "Social Media"
+        }
+      }
+    ]
+  };
+}
+  getUserdata() {
+    this.adminService.getUserdata().pipe(map((data)=> {
+      let month = [];
+      let count = [];
+      for (let item of data as Array<any>){
+         month.push(item.month);
+         count.push(item.count);
+      }
+      return {month,count}
+    })).subscribe((data) => {
+      this.chartOptions.series[0].data = data.count
+      this.chartOptions.labels = data.month;
+    });
+  }
 }
