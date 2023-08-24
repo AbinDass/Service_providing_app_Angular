@@ -14,7 +14,7 @@ export class ControlUpcomingComponent implements OnInit{
   userid: string | null = JSON.parse(window.localStorage.getItem('userid')!);
   appointmentStatus!:appointmentStatus[]
   showMoreStatus:boolean = false;
-ngOnInit(): void {
+ngOnInit(): void {  
   this.getAppointmentStatus()
 }
   getAppointmentStatus(){
