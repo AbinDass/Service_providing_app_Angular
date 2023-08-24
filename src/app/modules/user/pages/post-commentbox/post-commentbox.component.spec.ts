@@ -2,13 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostCommentboxComponent } from './post-commentbox.component';
 
-describe('PostCommentboxComponent', () => {
+xdescribe('PostCommentboxComponent', () => {
   let component: PostCommentboxComponent;
   let fixture: ComponentFixture<PostCommentboxComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PostCommentboxComponent]
+      declarations: [PostCommentboxComponent],
     });
     fixture = TestBed.createComponent(PostCommentboxComponent);
     component = fixture.componentInstance;

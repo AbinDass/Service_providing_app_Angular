@@ -19,13 +19,14 @@ export class AdminAddServiceComponent {
   async handleImage(event: Event) {
     let inputImg = event.target as HTMLInputElement;
     if (inputImg.files && inputImg.files.length > 0) {
-      this.iamgeurl = await toBase64(inputImg.files[0]);
+      const img =  await toBase64(inputImg.files[0])
+      this.iamgeurl = img as string;
     }
-  }
+  } 
   async handleLogo(event: Event) {
     let inputImg = event.target as HTMLInputElement;
     if (inputImg.files && inputImg.files.length > 0) {
-      this.logourl = await toBase64(inputImg.files[0]);
+      this.logourl = await toBase64(inputImg.files[0]) as string;
     }
   }
   submitFofrm() {

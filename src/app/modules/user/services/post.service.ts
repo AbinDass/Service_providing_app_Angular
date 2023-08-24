@@ -18,7 +18,7 @@ getAllComments(postId:string|undefined){
  return this.http.get<CommntState>(this.baseurl+`/posts/getComments/${postId}`)
 }
 
-createPost(imageurl:File|null, post:string, id:string|null){
+createPost(imageurl:string|null, post:string, id:string|null){
  return this.http.post(this.baseurl+'/createpost', {imageurl, post, id})
 }
 

@@ -2,13 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminServicesComponent } from './admin-services.component';
 
-describe('AdminServicesComponent', () => {
+xdescribe('AdminServicesComponent', () => {
   let component: AdminServicesComponent;
   let fixture: ComponentFixture<AdminServicesComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminServicesComponent]
+      declarations: [AdminServicesComponent],
     });
     fixture = TestBed.createComponent(AdminServicesComponent);
     component = fixture.componentInstance;

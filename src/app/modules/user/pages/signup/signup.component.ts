@@ -12,31 +12,31 @@ import { idSelector, tokenSelector } from '../../userState/auth/auth.selector';
 })
 export class SignupComponent {
   signupForm = new FormGroup({
-    firstname: new FormControl(null,[
+    firstname: new FormControl('',[
       Validators.required,
       Validators.maxLength(10),
       Validators.minLength(2),
     ]),
-    secondname: new FormControl(null,[
+    secondname: new FormControl('',[
       Validators.required,
       Validators.maxLength(10),
       Validators.minLength(2),
     ]),
-    email: new FormControl(null, [
+    email: new FormControl('', [
       Validators.required, 
       Validators.email
     ]),
-    phone: new FormControl(null, [
+    phone: new FormControl('', [
       Validators.required,
       Validators.maxLength(10),
       Validators.minLength(10),
       Validators.pattern('^[0-9]{10}$'),
     ]),
-    password: new FormControl(null, [
+    password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
     ]),
-    confirmpassword: new FormControl(null, [
+    confirmpassword: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
     ]),

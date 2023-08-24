@@ -1,7 +1,7 @@
 export interface availableService {
     services:[{
         description: string,
-        isfeleted?: boolean,
+        isdeleted?: boolean,
         servicelogo?:string[];
         thumbnail:string[];
         title:string;
@@ -24,6 +24,6 @@ export interface addService{
     servicetitle:string
     labour: string
     description: string
-    liesence: File | null
+    liesence: string | null
     id?:string | null
 }

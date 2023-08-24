@@ -31,7 +31,7 @@ export class ProfileEditComponent {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
       let image = await toBase64(inputElement.files[0]);
-      this.image = image;
+      this.image = image as string;
     }
   }
   

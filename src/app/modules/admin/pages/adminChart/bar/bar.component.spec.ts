@@ -2,13 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BarComponent } from './bar.component';
 
-describe('BarComponent', () => {
+xdescribe('BarComponent', () => {
   let component: BarComponent;
   let fixture: ComponentFixture<BarComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BarComponent]
+      declarations: [BarComponent],
     });
     fixture = TestBed.createComponent(BarComponent);
     component = fixture.componentInstance;

@@ -6,7 +6,7 @@ import {
   services,
 } from '../../model/serviceState';
 import { search_location } from '../../model/locationType';
-import { toBase64 } from '../../helper/toBase64.js';
+import { toBase64 } from '../../helper/toBase64';
 import { SubscriptionService } from '../../services/subscription.service';
 @Component({
   selector: 'app-add-service',
@@ -20,7 +20,7 @@ export class AddServiceComponent implements OnInit {
   @Input() subscibeExist!:boolean
   @Output('postEmit') postEmit = new EventEmitter()
   location!: search_location;
-  image!: File | null;
+  image!: string | null;
   constructor(private service: NearbyservicesService, private subscribe:SubscriptionService) {}
  
   formData: addService = {
@@ -53,7 +53,7 @@ export class AddServiceComponent implements OnInit {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
       let image = await toBase64(inputElement.files[0]);
-      this.formData.liesence = image;
+      this.formData.liesence = image as string;
     }
   }
   handleLocation(selectedLocation: search_location) {

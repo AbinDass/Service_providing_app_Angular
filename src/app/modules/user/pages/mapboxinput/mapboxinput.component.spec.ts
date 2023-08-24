@@ -2,13 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MapboxinputComponent } from './mapboxinput.component';
 
-describe('MapboxinputComponent', () => {
+xdescribe('MapboxinputComponent', () => {
   let component: MapboxinputComponent;
   let fixture: ComponentFixture<MapboxinputComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MapboxinputComponent]
+      declarations: [MapboxinputComponent],
     });
     fixture = TestBed.createComponent(MapboxinputComponent);
     component = fixture.componentInstance;

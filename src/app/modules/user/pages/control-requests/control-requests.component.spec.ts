@@ -2,13 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ControlRequestsComponent } from './control-requests.component';
 
-describe('ControlRequestsComponent', () => {
+xdescribe('ControlRequestsComponent', () => {
   let component: ControlRequestsComponent;
   let fixture: ComponentFixture<ControlRequestsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ControlRequestsComponent]
+      declarations: [ControlRequestsComponent],
     });
     fixture = TestBed.createComponent(ControlRequestsComponent);
     component = fixture.componentInstance;

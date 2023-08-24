@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NearbyservicesService } from '../../services/nearbyservices.service';
 @Component({
   selector: 'app-landing',

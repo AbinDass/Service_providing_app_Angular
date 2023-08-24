@@ -8,7 +8,7 @@ import { PostService } from '../../services/post.service';
   styleUrls: ['./post-add.component.css']
 })
 export class PostAddComponent {
-postimg!:File|null;
+postimg!:string|null;
 caption!:string;
 userid: string | null = JSON.parse(window.localStorage.getItem('userid')!);
 
@@ -17,7 +17,7 @@ userid: string | null = JSON.parse(window.localStorage.getItem('userid')!);
  async handleImage(event: Event) {
    let inputImg = event.target as HTMLInputElement;
    if(inputImg.files && inputImg.files.length > 0){
-     this.postimg = await toBase64(inputImg.files[0])
+     this.postimg = await toBase64(inputImg.files[0]) as string
    }
   }
 
