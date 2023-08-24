@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input ,Output} from '@angular/core';
 import { SubscriptionService } from '../../services/subscription.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-admin-add-subscriptions',
@@ -7,6 +8,7 @@ import { SubscriptionService } from '../../services/subscription.service';
   styleUrls: ['./admin-add-subscriptions.component.css'],
 })
 export class AdminAddSubscriptionsComponent {
+private ngUnsubscribe = new Subject<void>();
   constructor(private subscription:SubscriptionService){}
   @Input() seelist!:boolean;
   @Output('seelist') seeListEmitter = new EventEmitter()
@@ -19,10 +21,17 @@ export class AdminAddSubscriptionsComponent {
   };
 background = ['']
 submitForm(){
-  this.subscription.addSubscription(this.formData, this.background).subscribe(data=>console.log(data))
+  this.subscription.addSubscription(this.formData, this.background)
+.pipe(takeUntil(this.ngUnsubscribe)) 
+  .subscribe(data=>console.log(data))
 }
 
 seeList(){
   this.seeListEmitter.emit()
+}
+
+ngOnDestroy(): void {
+  this.ngUnsubscribe.next();
+  this.ngUnsubscribe.complete();
 }
 }

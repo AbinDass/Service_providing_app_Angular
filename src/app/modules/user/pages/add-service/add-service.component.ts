@@ -8,6 +8,7 @@ import {
 import { search_location } from '../../model/locationType';
 import { toBase64 } from '../../helper/toBase64';
 import { SubscriptionService } from '../../services/subscription.service';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-add-service',
   templateUrl: './add-service.component.html',
@@ -21,6 +22,8 @@ export class AddServiceComponent implements OnInit {
   @Output('postEmit') postEmit = new EventEmitter()
   location!: search_location;
   image!: string | null;
+  private ngUnsubscribe = new Subject<void>();
+
   constructor(private service: NearbyservicesService, private subscribe:SubscriptionService) {}
  
   formData: addService = {
@@ -44,7 +47,9 @@ export class AddServiceComponent implements OnInit {
     if(!form) return
     let allservice = { ...this.formData, ...this.location };
     this.postEmit.emit()
-    this.service.addService(allservice).subscribe((data) => {
+    this.service.addService(allservice)
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data) => {
     if(data)  alert(`your proof want to varify , it will be update`)
     });
 
@@ -79,4 +84,8 @@ export class AddServiceComponent implements OnInit {
     labelName: 'add proof',
     inputPlaceHolder: 'xyz.jpg',
   };
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
 }

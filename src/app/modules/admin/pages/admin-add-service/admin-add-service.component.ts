@@ -1,6 +1,7 @@
 import { Component , EventEmitter, Output} from '@angular/core';
 import { toBase64 } from '../../helper/toBase64';
 import { AdminService } from '../../services/admin.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-admin-add-service',
@@ -8,6 +9,7 @@ import { AdminService } from '../../services/admin.service';
   styleUrls: ['./admin-add-service.component.css'],
 })
 export class AdminAddServiceComponent {
+  private ngUnsubscribe = new Subject<void>();
   @Output('toggle') toggleEmit = new EventEmitter()
   constructor(private adminService: AdminService) {}
   formData = {
@@ -41,6 +43,11 @@ export class AdminAddServiceComponent {
       this.iamgeurl,
       this.logourl,
       this.formData.description
-    ).subscribe(data => this.toggleEmit.emit())
+    ).pipe(takeUntil(this.ngUnsubscribe)).subscribe(data => this.toggleEmit.emit())
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

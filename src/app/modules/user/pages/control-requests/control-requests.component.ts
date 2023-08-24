@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlpanelService } from '../../services/controlpanel.service';
 import { requests } from '../../model/controlPaanelTypes';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-control-requests',
@@ -8,6 +9,8 @@ import { requests } from '../../model/controlPaanelTypes';
   styleUrls: ['./control-requests.component.css']
 })
 export class ControlRequestsComponent implements OnInit {
+  private ngUnsubscribe = new Subject<void>();
+
   constructor(private controlpanel:ControlpanelService){}
   userid: string | null = JSON.parse(window.localStorage.getItem('userid')!);
   allrequests!:requests
@@ -16,14 +19,22 @@ ngOnInit(): void {
   this.getAllRequests()
 }
   getAllRequests(){
-    this.controlpanel.allRequests(this.userid).subscribe(data => this.allrequests = data)
+    this.controlpanel.allRequests(this.userid)
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(data => this.allrequests = data)
   }
 
   acceptRequest(requestId:string|undefined){
-    this.controlpanel.acceptRequest(requestId, this.userid).subscribe(data => console.log(data))
+    this.controlpanel.acceptRequest(requestId, this.userid)
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(data => console.log(data))
   }
 
   rejectRequest(){
     this.controlpanel
+  }
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

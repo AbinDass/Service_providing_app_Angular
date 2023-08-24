@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,Input, EventEmitter} from '@angular/core';
 import { NearbyservicesService } from '../../services/nearbyservices.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-chooselocation',
@@ -9,6 +10,7 @@ import { NearbyservicesService } from '../../services/nearbyservices.service';
 export class ChooselocationComponent implements OnInit {
   @Output('district') distEmiter = new EventEmitter<string>();
   @Output('closeLocation') locationCloseEmiter = new EventEmitter();
+  private ngUnsubscribe = new Subject<void>();
   constructor(private service:NearbyservicesService){}
 
 
@@ -17,7 +19,9 @@ export class ChooselocationComponent implements OnInit {
     this.getAllLocation()
   }
   getAllLocation(){
-    this.service.getAlldistricts().subscribe((data) => this.allLocations = data)
+    this.service.getAlldistricts()
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data) => this.allLocations = data)
   }
 
   selectDistrict(dist:string){
@@ -27,5 +31,10 @@ export class ChooselocationComponent implements OnInit {
 
   close(){
     this.locationCloseEmiter.emit()
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }
