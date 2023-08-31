@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UserAuthService {
   // baseurl: string = 'https://social-expo.onrender.com/api';
-  baseurl: string = 'http://localhost:8000/api';
+  baseurl: string = 'https://social-expo.onrender.com/api';
   constructor(private http: HttpClient) {}
 
   userLogin(data: {

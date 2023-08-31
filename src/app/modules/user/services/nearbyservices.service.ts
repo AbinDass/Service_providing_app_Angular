@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class NearbyservicesService {
-  baseurl: string = 'http://localhost:8000/api';
+  baseurl: string = 'https://social-expo.onrender.com/api';
 
  
   locationSubject$= new BehaviorSubject<string>('')

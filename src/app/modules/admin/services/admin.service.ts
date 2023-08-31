@@ -9,8 +9,8 @@ import { services } from '../model/servicesType';
   providedIn: 'root',
 })
 export class AdminService {
-  baseurl: string = 'http://localhost:8000/admin';
-  baseurlUser: string = 'http://localhost:8000/api';
+  baseurl: string = 'https://social-expo.onrender.com/admin';
+  baseurlUser: string = 'https://social-expo.onrender.com/api';
 
   constructor(private http: HttpClient) {}
   getUserList() {

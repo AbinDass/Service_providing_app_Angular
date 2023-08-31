@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  baseurl: string = 'http://localhost:8000/admin';
+  baseurl: string = 'https://social-expo.onrender.com/admin';
 
   constructor(private http:HttpClient) { }
 

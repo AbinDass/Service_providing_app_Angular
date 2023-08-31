@@ -6,7 +6,7 @@ import { appointment, appointmentStatus, requests } from '../model/controlPaanel
   providedIn: 'root'
 })
 export class ControlpanelService {
-  baseurl: string = 'http://localhost:8000/api';
+  baseurl: string = 'https://social-expo.onrender.com/api';
 
   constructor(private http:HttpClient) { }
   allRequests(userid: string|null){

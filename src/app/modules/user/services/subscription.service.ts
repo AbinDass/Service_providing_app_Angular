@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class SubscriptionService {
   constructor(private http: HttpClient) {}
-  baseurlAdmin: string = 'http://localhost:8000/admin';
-  baseurl: string = 'http://localhost:8000/api';
+  baseurlAdmin: string ='https://social-expo.onrender.com/admin';
 
+  baseurl: string = 'https://social-expo.onrender.com/api';
   getPlans() {
     return this.http.get<{ plans: plans[] }>(
       this.baseurlAdmin + '/subscriptions'

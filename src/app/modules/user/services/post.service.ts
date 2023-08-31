@@ -6,7 +6,7 @@ import {Observable} from 'rxjs'
   providedIn: 'root'
 })
 export class PostService {
-  baseurl: string = 'http://localhost:8000/api';
+  baseurl: string = 'https://social-expo.onrender.com/api';
 
   constructor(private http:HttpClient) { }
 

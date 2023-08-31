@@ -6,7 +6,7 @@ import { userModel } from '../model/userState';
   providedIn: 'root',
 })
 export class ProfileService {
-  baseurl: string = 'http://localhost:8000/api';
+  baseurl: string = 'https://social-expo.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 

@@ -6,7 +6,7 @@ import { subscription } from '../model/subscriptionType';
   providedIn: 'root',
 })
 export class SubscriptionService {
-  baseurl: string = 'http://localhost:8000/admin';
+  baseurl: string = 'https://social-expo.onrender.com/admin';
   constructor(private http: HttpClient) {}
   addSubscription(
     data: {

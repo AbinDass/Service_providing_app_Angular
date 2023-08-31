@@ -13,6 +13,9 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if(this.ExludeUrl(request.url)){
+      return next.handle(request)
+    }
     const token  = window.localStorage.getItem('token');
     
     request = request.clone({
@@ -23,4 +26,10 @@ export class TokenInterceptor implements HttpInterceptor {
   
     return next.handle(request);
   }
+
+  private ExludeUrl(url:string):boolean{
+    const urls=['/signin','/signup']
+    return urls.some((urls)=> url.includes(urls) )
+  }
+
 }
